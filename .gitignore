@@ -2,7 +2,6 @@
 .vscode
 /Logs
 /Temp
-/Library/PackageCache/
-/Library/TempArtifacts/
-/Library/ShaderCache/
+/Library
 /UserSettings
+/obj
