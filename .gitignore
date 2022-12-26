@@ -1,0 +1,11 @@
+.idea
+.vscode
+/Logs
+/Temp
+/Library
+/UserSettings
+/Packages
+/obj
+Assembly-CSharp.csproj
+Pardo.io.sln
+.DS_Store
