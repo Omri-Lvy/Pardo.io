@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _walkingSpeed = 2.25f;
+    [SerializeField] private float _walkingSpeed = 5f;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         
         transform.Translate(direction * (_walkingSpeed * Time.deltaTime));
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-5f,5f), 0);
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-9.25f,9.25f),transform.position.y,0);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-4.5f,4.5f), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-8.4f,8.4f),transform.position.y,0);
     }
 }
