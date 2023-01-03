@@ -11,7 +11,10 @@ namespace Scripts
         private float _attack;
         private float _def;
         private float _speed;
-        
+        private int _exp;
+        private int _maxExp;
+        private int _level;
+
         public PlayerStats()
         {
             _currentHealth = MAX_HEALTH;
@@ -24,6 +27,9 @@ namespace Scripts
             _attack = attack;
             _speed = speed;
             _def = def;
+            _exp = 0;
+            _maxExp = 100;
+            _level = 1;
         }
 
         public void getHit(float attack)
@@ -33,7 +39,7 @@ namespace Scripts
             {
                 Debug.Log("DEAD: " + _currentHealth);
                 _isDead = true;
-                
+
             }
         }
 
@@ -45,7 +51,7 @@ namespace Scripts
         {
             return _currentHealth;
         }
-        
+
         public void setAttack(float newAttack)
         {
             _attack = newAttack;
@@ -54,7 +60,7 @@ namespace Scripts
         {
             return _attack;
         }
-        
+
         public void setDef(float newDef)
         {
             _def = newDef;
@@ -63,7 +69,7 @@ namespace Scripts
         {
             return _def;
         }
-        
+
         public void setSpeed(float newSpeed)
         {
             _speed = newSpeed;
@@ -80,6 +86,38 @@ namespace Scripts
         public bool isDead()
         {
             return _isDead;
+        }
+
+        public int getLevel()
+        {
+            return _level;
+        }
+        public int getXp()
+        {
+            return _exp;
+        }
+
+        public bool needLevelup()
+        {
+            if (_exp >= _maxExp)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void LevelUp()
+        {
+            _attack++;
+            _def++;
+            _currentHealth = MAX_HEALTH;
+            _exp = 0;
+            _level = _level + 1;
+        }
+
+        public void addXp(int xp)
+        {
+            _exp = +xp;
         }
     }
 }

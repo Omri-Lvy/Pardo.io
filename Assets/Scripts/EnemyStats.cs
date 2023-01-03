@@ -12,19 +12,21 @@ namespace Scripts
         private float _def;
         private float _speed;
         private bool _isHit;
-        
+        private int _xpGiven;
+
         public EnemyStats()
         {
             _currentHealth = MAX_HEALTH;
             _isDead = false;
         }
-        public EnemyStats(float attack, float speed, float def, float health)
+        public EnemyStats(float attack, float speed, float def, float health, int xpGiven)
         {
             _currentHealth = health;
             _isDead = false;
             _attack = attack;
             _speed = speed;
             _def = def;
+            _xpGiven = xpGiven;
         }
 
         public void getHit(float attack)
@@ -46,7 +48,7 @@ namespace Scripts
         {
             return _currentHealth;
         }
-        
+
         public void setAttack(float newAttack)
         {
             _attack = newAttack;
@@ -55,7 +57,7 @@ namespace Scripts
         {
             return _attack;
         }
-        
+
         public void setDef(float newDef)
         {
             _def = newDef;
@@ -64,7 +66,7 @@ namespace Scripts
         {
             return _def;
         }
-        
+
         public void setSpeed(float newSpeed)
         {
             _speed = newSpeed;
