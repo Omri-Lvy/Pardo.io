@@ -1,19 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Scripts;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _walkingSpeed = 5f;
+    [SerializeField] private float _walkingSpeed = 2.25f;
+    [SerializeField] private float _attack = 10;
+    [SerializeField] private float _def = 10;
     public Animator animator;
-
+    public PlayerStats stats;
+    
     public Quaternion q;
     // Start is called before the first frame update
     void Start()
     {
         //Reset position to (0,0,0)
+        stats = new PlayerStats(_attack, _walkingSpeed, _def);
         transform.position = new Vector3(0, 0, 0);
+        
     }
 
     // Update is called once per frame
@@ -44,5 +50,23 @@ public class Player : MonoBehaviour
         transform.Translate(direction * (_walkingSpeed * Time.deltaTime));
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y,-4.5f,4.5f), 0);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x,-8.4f,8.4f),transform.position.y,0);
+    }
+
+    public PlayerStats getStats()
+    {
+        return stats;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            stats.getHit(other.gameObject.GetComponent<Enemy>().getStats().getAttack());
+            Debug.Log(stats.getCurrentHealth());
+            if (stats.isDead())
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
