@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue_Snail_hit
+  m_Name: Blue_Mushroom_die
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,12 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7cf4645fe0e648a4da6a249cdf87c2e2, type: 3}
+      value: {fileID: 21300000, guid: c8ee75cb9f5281044af602f042f6546f, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: c1cbda0e640d3c54a9e47e61ffe3e62b, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 2006b116ce559f5448bfc781a87f9195, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 1
+  m_SampleRate: 3
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -40,7 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7cf4645fe0e648a4da6a249cdf87c2e2, type: 3}
+    - {fileID: 21300000, guid: c8ee75cb9f5281044af602f042f6546f, type: 3}
+    - {fileID: 21300000, guid: c1cbda0e640d3c54a9e47e61ffe3e62b, type: 3}
+    - {fileID: 21300000, guid: 2006b116ce559f5448bfc781a87f9195, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

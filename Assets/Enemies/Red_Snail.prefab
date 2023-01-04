@@ -102,10 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _speed: 1
-  _attack: 40
-  _def: 10
-  _health: 100
-  _xpGiven: 10
+  _attack: 14
+  _def: 50
+  _health: 45
+  _xpGiven: 3
   _animator: {fileID: 0}
 --- !u!54 &932545349604720836
 Rigidbody:
