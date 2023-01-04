@@ -13,6 +13,7 @@ namespace Scripts
         private float _speed;
         private bool _isHit;
         private int _xpGiven;
+        private bool _gaveXP;
 
         public EnemyStats()
         {
@@ -27,6 +28,7 @@ namespace Scripts
             _speed = speed;
             _def = def;
             _xpGiven = xpGiven;
+            _gaveXP = false;
         }
 
         public void getHit(float attack)
@@ -93,6 +95,12 @@ namespace Scripts
         public bool isDead()
         {
             return _isDead;
+        }
+        public bool gaveXP() {
+            return _gaveXP;
+        }
+        public void setGaveXP (bool val) {
+            _gaveXP = val;
         }
     }
 }

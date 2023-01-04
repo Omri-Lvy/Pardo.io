@@ -27,10 +27,7 @@ public class Player : MonoBehaviour
     {
         CalculateMovement();
         // check if need to level up:
-        if (stats.needLevelup())
-        {
-            stats.LevelUp();
-        }
+        stats.needLevelup();
     }
 
     // Levels up the character, updates stats
