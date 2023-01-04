@@ -122,6 +122,8 @@ namespace Scripts
             _maxExp += 10;
             _level += 1;
             GameObject.Find("XP_Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
+            GameObject.Find("Health_Bar").GetComponent<healthBar>().changeMaxVal(_maxHealth);
+            GameObject.Find("Level_Text").GetComponent<LevelText>().changeVal(_level);
             Debug.Log("Leveled up! Now level: " + _level);
         }
 
