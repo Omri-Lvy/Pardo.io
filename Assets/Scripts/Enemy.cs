@@ -16,23 +16,30 @@ public class Enemy : MonoBehaviour
     private EnemyStats _stats;
     private float timer;
     private float timerLimit = 0.25f;
+    private string _moveAnim;
+    private string _dieAnim;
+    private string _hitAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
         _stats = new EnemyStats(_attack, _speed, _def, _health, _xpGiven);
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _moveAnim = gameObject.name.Split(" ")[0] + "_move";
+        _dieAnim = gameObject.name.Split(" ")[0] + "_die";
+        _hitAnim = gameObject.name.Split(" ")[0] + "_hit";
+        Debug.Log(_moveAnim);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_stats.getIsHit());
         if (_stats.isDead())
         {
             _player.GetComponent<Player>().getStats().addXp(_xpGiven);
-            Debug.Log("XP: " + _player.GetComponent<Player>().getStats().getXp());
-            _animator.Play("Snail_die");
+            // Debug.Log("XP: " + _player.GetComponent<Player>().getStats().getXp());
+            _animator.Play(_dieAnim);
             Destroy(gameObject,1f);
         }
         else if (_stats.getIsHit() && !_stats.isDead())
@@ -51,7 +58,7 @@ public class Enemy : MonoBehaviour
         else if (!_stats.getIsHit() && !_stats.isDead())
         {
             _stats.setSpeed(_speed);
-            _animator.Play("Snail_move");
+            _animator.Play(_moveAnim);
         }
         if (_player.transform.position.x > transform.position.x)
         {
@@ -76,7 +83,7 @@ public class Enemy : MonoBehaviour
             _stats.getHit(damage);
             timer = 0;
             _stats.setSpeed(0);
-            _animator.Play("Snail_hit");
+            _animator.Play(_hitAnim);
         }
     }
 
