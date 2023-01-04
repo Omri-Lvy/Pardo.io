@@ -96,7 +96,7 @@ namespace Scripts
 
         public void addXp(int xp)
         {
-            _exp = +xp;
+            _exp += xp;
         }
 
         public int getMaxXp()
@@ -121,7 +121,7 @@ namespace Scripts
             _exp = _exp - _maxExp; // Take carry over xp
             _maxExp += 10;
             _level += 1;
-            GameObject.Find("XP Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
+            GameObject.Find("XP_Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
             Debug.Log("Leveled up! Now level: " + _level);
         }
 
