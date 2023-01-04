@@ -15,12 +15,7 @@ namespace Scripts
         private int _maxExp;
         private int _level;
 
-        public PlayerStats()
-        {
-            _maxHealth = 100;
-            _currentHealth = _maxHealth;
-            _isDead = false;
-        }
+
         public PlayerStats(float attack, float speed, float def)
         {
             _maxHealth = 100;
@@ -30,7 +25,7 @@ namespace Scripts
             _speed = speed;
             _def = def;
             _exp = 0;
-            _maxExp = 100;
+            _maxExp = 25;
             _level = 1;
         }
 
@@ -99,13 +94,22 @@ namespace Scripts
             return _exp;
         }
 
-        public bool needLevelup()
+        public void addXp(int xp)
+        {
+            _exp = +xp;
+        }
+
+        public int getMaxXp()
+        {
+            return _maxExp;
+        }
+
+        public void needLevelup()
         {
             if (_exp >= _maxExp)
             {
-                return true;
+                LevelUp();
             }
-            return false;
         }
 
         public void LevelUp()
@@ -114,13 +118,12 @@ namespace Scripts
             _def += 5;
             _maxHealth += 10;
             _currentHealth = _maxHealth;
-            _exp = 0;
-            _level = _level + 1;
+            _exp = _exp - _maxExp; // Take carry over xp
+            _maxExp += 10;
+            _level += 1;
+            GameObject.Find("XP Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
+            Debug.Log("Leveled up! Now level: " + _level);
         }
 
-        public void addXp(int xp)
-        {
-            _exp = +xp;
-        }
     }
 }

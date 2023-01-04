@@ -37,10 +37,14 @@ public class Enemy : MonoBehaviour
     {
         if (_stats.isDead())
         {
-            _player.GetComponent<Player>().getStats().addXp(_xpGiven);
-            // Debug.Log("XP: " + _player.GetComponent<Player>().getStats().getXp());
             _animator.Play(_dieAnim);
-            Destroy(gameObject,1f);
+            Destroy(gameObject, 1f);
+            if(!_stats.gaveXP()) {
+                _player.GetComponent<Player>().getStats().addXp(_xpGiven);
+                _stats.setGaveXP(true);
+                Debug.Log("XP Given: " _xpGiven);
+            }
+            
         }
         else if (_stats.getIsHit() && !_stats.isDead())
         {
