@@ -26,9 +26,9 @@ public class Enemy : MonoBehaviour
     {
         _stats = new EnemyStats(_attack, _speed, _def, _health, _xpGiven);
         _player = GameObject.FindGameObjectWithTag("Player");
-        _moveAnim = gameObject.name.Split(" ")[0] + "_move";
-        _dieAnim = gameObject.name.Split(" ")[0] + "_die";
-        _hitAnim = gameObject.name.Split(" ")[0] + "_hit";
+        _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_move";
+        _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_die";
+        _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_hit";
         Debug.Log(_moveAnim);
     }
 
