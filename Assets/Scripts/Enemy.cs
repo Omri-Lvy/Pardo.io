@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
             if(!_stats.gaveXP()) {
                 _player.GetComponent<Player>().getStats().addXp(_xpGiven);
                 _stats.setGaveXP(true);
-                Debug.Log("XP Given: " _xpGiven);
+                Debug.Log("XP Given: " + _xpGiven);
             }
             
         }
