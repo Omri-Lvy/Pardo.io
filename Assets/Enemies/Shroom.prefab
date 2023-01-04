@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _speed: 1
+  _speed: 2
   _attack: 12
   _def: 20
   _health: 15
