@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcab54355d25645f5a2d286d7e62085d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd0940be317418541a1520cc01817464, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkingSpeed: 2.25
+  _attack: 10
+  _def: 10
   animator: {fileID: 0}
+  stats: {fileID: 0}
   q: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8828908344680992980
 MonoBehaviour:
@@ -168,7 +171,7 @@ MonoBehaviour:
   aimTransform: {fileID: 8828908344803537495}
 --- !u!95 &8828908344680992978
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -185,7 +188,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!54 &2179526863284182233
 Rigidbody:
   m_ObjectHideFlags: 0
