@@ -37,7 +37,6 @@ namespace Scripts
             _isHit = true;
             if (_currentHealth <= 0 && _isDead == false)
             {
-                Debug.Log("DEAD: " + _currentHealth);
                 _isDead = true;
             }
         }

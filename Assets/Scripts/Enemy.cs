@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
         _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_move";
         _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_die";
         _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_hit";
-        Debug.Log(_moveAnim);
     }
 
     // Update is called once per frame
@@ -42,7 +41,6 @@ public class Enemy : MonoBehaviour
             if(!_stats.gaveXP()) {
                 _player.GetComponent<Player>().getStats().addXp(_xpGiven);
                 _stats.setGaveXP(true);
-                Debug.Log("XP Given: " + _xpGiven);
             }
             
         }

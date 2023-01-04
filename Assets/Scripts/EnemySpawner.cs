@@ -1,29 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Component
 {
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private float enemyInterval = 3.5f;
-    [SerializeField] private float counter;
-    // Start is called before the first frame update
-    void Start()
+    private GameObject _enemy;
+    private float _enemyInterval;
+    private float _counter;
+    private int _max;
+
+    private IEnumerator spawnEnemy()
     {
-        StartCoroutine(spawnEnemy(enemyInterval, enemy));
+        if (_counter++ < _max)
+        {
+            yield return new WaitForSeconds(_enemyInterval);
+            Instantiate(_enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public EnemySpawner(GameObject enemy, float interval,int max)
     {
-        
-    }
-
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    {
-        counter += 1;
-        yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));        
+        _enemy = enemy;
+        _enemyInterval = interval;
+        _counter = 0;
+        _max = max;
     }
 }
