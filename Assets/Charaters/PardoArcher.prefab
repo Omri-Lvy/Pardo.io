@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ebd1ebcde145cc747ae1a8298a08b7e9, type: 2}
+    - target: {fileID: 8828908344680992981, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 3090272732716792246, guid: 3677e22cb8574b047bf92612ba1456ec, type: 3}
     - target: {fileID: 8828908344680992982, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
       propertyPath: m_Sprite
       value: 
