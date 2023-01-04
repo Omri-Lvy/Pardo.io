@@ -5,8 +5,8 @@ namespace Scripts
 {
     public class PlayerStats : Component
     {
-        private const int MAX_HEALTH = 100;
         private float _currentHealth;
+        private float _maxHealth;
         private bool _isDead;
         private float _attack;
         private float _def;
@@ -17,12 +17,14 @@ namespace Scripts
 
         public PlayerStats()
         {
-            _currentHealth = MAX_HEALTH;
+            _maxHealth = 100;
+            _currentHealth = _maxHealth;
             _isDead = false;
         }
         public PlayerStats(float attack, float speed, float def)
         {
-            _currentHealth = MAX_HEALTH;
+            _maxHealth = 100;
+            _currentHealth = _maxHealth;
             _isDead = false;
             _attack = attack;
             _speed = speed;
@@ -45,7 +47,7 @@ namespace Scripts
 
         public void setCurrenthealth(float newHealth)
         {
-            _currentHealth = Math.Min(MAX_HEALTH, newHealth);
+            _currentHealth = Math.Min(_maxHealth, newHealth);
         }
         public float getCurrentHealth()
         {
@@ -108,9 +110,10 @@ namespace Scripts
 
         public void LevelUp()
         {
-            _attack++;
-            _def++;
-            _currentHealth = MAX_HEALTH;
+            _attack += 3;
+            _def += 5;
+            _maxHealth += 10;
+            _currentHealth = _maxHealth;
             _exp = 0;
             _level = _level + 1;
         }
