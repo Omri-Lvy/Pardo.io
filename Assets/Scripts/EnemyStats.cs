@@ -33,7 +33,7 @@ namespace Scripts
 
         public void getHit(float attack)
         {
-            _currentHealth -= attack * (1 - _def / 100);
+            _currentHealth -= attack * (100/(100 + _def));
             _isHit = true;
             if (_currentHealth <= 0 && _isDead == false)
             {
