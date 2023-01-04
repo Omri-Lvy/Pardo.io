@@ -38,7 +38,7 @@ public class Bullets : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(this.gameObject);
-            other.gameObject.GetComponent<Enemy>().getStats().getHit(damage);
+            other.gameObject.GetComponent<Enemy>().getHit(damage);
         }
     }
 }

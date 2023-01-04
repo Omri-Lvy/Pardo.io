@@ -72,8 +72,10 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            stats.getHit(other.gameObject.GetComponent<Enemy>().getStats().getAttack());
-            Debug.Log(stats.getCurrentHealth());
+            if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
+            {
+                stats.getHit(other.gameObject.GetComponent<Enemy>().getStats().getAttack());
+            }
             if (stats.isDead())
             {
                 Destroy(gameObject);
