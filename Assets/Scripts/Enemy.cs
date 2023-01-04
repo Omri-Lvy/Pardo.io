@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
         else if (!_stats.getIsHit() && !_stats.isDead())
         {
             _stats.setSpeed(_speed);
-            _animator.Play("Snail_walk");
+            _animator.Play("Snail_move");
         }
         if (_player.transform.position.x > transform.position.x)
         {
