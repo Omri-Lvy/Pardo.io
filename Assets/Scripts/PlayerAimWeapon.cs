@@ -9,8 +9,6 @@ public class PlayerAimWeapon : MonoBehaviour
     private Vector3 mousePos;
     private bool canFire = true;
     private float timer;
-    private int maxShots = 10;
-    private int shotFired = 0;
     private float timeBetweenShots = 0.5f;
 
     public GameObject bullet;
@@ -47,14 +45,12 @@ public class PlayerAimWeapon : MonoBehaviour
             {
                 canFire = true;
                 timer = 0;
-                shotFired = 0;
             }
         }
         if (canFire)
         {
             canFire = false;
             Instantiate(bullet, aimTransform.position, Quaternion.identity);
-            shotFired += 1;
         }
         
     }
