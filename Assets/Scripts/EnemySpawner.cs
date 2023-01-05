@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : Component
 {
@@ -13,7 +15,7 @@ public class EnemySpawner : Component
         if (_counter++ < _max)
         {
             yield return new WaitForSeconds(_enemyInterval);
-            Instantiate(_enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+            Instantiate(_enemy, new Vector3(Random.Range(-5f,5f), Random.Range(-6f,6f), 0), Quaternion.identity);
         }
     }
 

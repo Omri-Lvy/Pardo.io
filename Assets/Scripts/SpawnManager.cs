@@ -78,7 +78,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
@@ -90,7 +90,13 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        float xPos = Random.Range(-5.5f, 5.5f);
+                        float yPos = Random.Range(-6f, 6f);
+                        if (xPos < 0) xPos -= 4.6f;
+                        else if (xPos >= 0) xPos += 4.6f;
+                        if (yPos < 0) yPos -= 8.5f;
+                        else if (yPos >= 0) yPos += 8.5f;
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
@@ -102,7 +108,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
@@ -114,7 +120,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
@@ -126,7 +132,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
@@ -138,12 +144,29 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
                     {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
                         mob.increaseInstantiateCounter();
                         mob.setLastInstantiate(_timer);
                     }
                 } 
             }
         } 
+    }
+
+    private float getRandomX()
+    {
+        float xPos = Random.Range(-5.5f, 5.5f);
+        if (xPos < 0) xPos -= 4.6f;
+        else if (xPos >= 0) xPos += 4.6f;
+        return xPos;
+        
+    }
+
+    private float getRandomY()
+    {
+        float yPos = Random.Range(-6f, 6f);
+        if (yPos < 0) yPos -= 8.5f;
+        else if (yPos >= 0) yPos += 8.5f;
+        return yPos;
     }
 }
