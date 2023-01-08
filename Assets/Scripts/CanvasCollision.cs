@@ -7,22 +7,40 @@ using UnityEngine.UI;
 public class CanvasCollision : MonoBehaviour
 {
     [SerializeField] private Canvas _canvas;
+    private CanvasGroup _canvasgroup;
+    private GameObject _player;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.tag+", "+other.name);
-        if (other.tag == "Player" || other.name == "Pardo")
-        {
-            _canvas.GetComponent<CanvasGroup>().alpha = 0.2f;
-        }
-            
+    private void Start() {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _canvasgroup = _canvas.GetComponent<CanvasGroup>();
     }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.name == "Player")
-        {
-            _canvas.GetComponent<CanvasGroup>().alpha = 1f;
+    
+    private void Update() {
+        _canvasgroup = _canvas.GetComponent<CanvasGroup>();
+        float playerX = _player.transform.position.x;
+        float playerY = _player.transform.position.y;
+        if(_canvasgroup != null) {
+            if(playerX < -3.8 && playerY < -2.7) {
+                _canvasgroup.alpha = 0.4f;
+            } else {
+                _canvasgroup.alpha = 1f;
+            }
         }
-            
     }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.tag == "Player")
+    //     {
+    //         _canvas.GetComponent<CanvasGroup>().alpha = 0.2f;
+    //     }
+            
+    // }
+    // void OnTriggerExit(Collider other)
+    // {
+    //     if (other.tag == "Player")
+    //     {
+    //         _canvas.GetComponent<CanvasGroup>().alpha = 1f;
+    //     }
+            
+    // }
 }
