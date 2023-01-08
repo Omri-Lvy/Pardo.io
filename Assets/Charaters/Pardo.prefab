@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d70eb49b52f948a7baf7ccc4070a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2242582299091277125, guid: da4410b22ad6472cb4ee8064992eb696, type: 3}
+  bullet: {fileID: 6288296812869511122, guid: 33efcd5adff20f84781d9164018755e6, type: 3}
   aimTransform: {fileID: 8828908344803537495}
 --- !u!95 &8828908344680992978
 Animator:
