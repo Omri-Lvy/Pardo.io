@@ -27,20 +27,4 @@ public class CanvasCollision : MonoBehaviour
             }
         }
     }
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.tag == "Player")
-    //     {
-    //         _canvas.GetComponent<CanvasGroup>().alpha = 0.2f;
-    //     }
-            
-    // }
-    // void OnTriggerExit(Collider other)
-    // {
-    //     if (other.tag == "Player")
-    //     {
-    //         _canvas.GetComponent<CanvasGroup>().alpha = 1f;
-    //     }
-            
-    // }
 }
