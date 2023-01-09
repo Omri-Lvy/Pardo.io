@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MagicianSkills : MonoBehaviour
 {
-    private bool _skill1, _skill2, _skill3;
+    private bool _skill2, _skill3;
     [SerializeField] private GameObject fireball;
     [SerializeField] private GameObject firepillar;
     [SerializeField] private GameObject poisionCloud;
+    private Transform _transform;
 
 
     // Start is called before the first frame update
@@ -19,7 +20,8 @@ public class MagicianSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("1") && _skill1) {
+        _transform = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAimWeapon>().aimTransform;
+        if(Input.GetKeyDown("1")) {
             Fireball();
         }
         if(Input.GetKeyDown("2") && _skill2) {
@@ -31,7 +33,15 @@ public class MagicianSkills : MonoBehaviour
     }
 
     private void Fireball() {
-        Instantiate(fireball, )
+        Instantiate(fireball, _transform.position, _transform.rotation);
+    }
+
+    private void Firepillar() {
+
+    }
+
+    private void PoisionCloud() {
+
     }
     
 }
