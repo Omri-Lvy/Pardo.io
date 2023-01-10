@@ -14,13 +14,14 @@ public class MagicianSkills : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _skill2 = false;
+        _skill3 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _transform = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAimWeapon>().aimTransform;
+        _transform = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAimWeapon>().transform;
         if(Input.GetKeyDown("1")) {
             Fireball();
         }

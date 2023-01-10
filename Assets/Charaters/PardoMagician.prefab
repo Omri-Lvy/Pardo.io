@@ -75,10 +75,31 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8828908344680992980, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
 --- !u!95 &4050680717114121605 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8828908344680992978, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
   m_PrefabInstance: {fileID: 4805479316126027095}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4050680717114121631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8828908344680992968, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
+  m_PrefabInstance: {fileID: 4805479316126027095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9008054299481910121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050680717114121631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21872f6440a1b4d24b2119d85c0a8204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireball: {fileID: 6621044961275106557, guid: 3400322a93214e14caf6fa77b838ccb6, type: 3}
+  firepillar: {fileID: 3951058116000299342, guid: 8019ff3682e5d4f43813c6281526c76d, type: 3}
+  poisionCloud: {fileID: 8971600940987924012, guid: ea297d11e2085824686ae711bd8bbf6f, type: 3}
