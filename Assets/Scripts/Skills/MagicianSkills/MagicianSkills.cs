@@ -7,7 +7,7 @@ public class MagicianSkills : MonoBehaviour
     private bool _skill2, _skill3;
     [SerializeField] private GameObject fireball;
     [SerializeField] private GameObject firepillar;
-    [SerializeField] private GameObject poisionCloud;
+    [SerializeField] private GameObject poisonCloud;
     private Transform _transform;
 
 
@@ -29,7 +29,7 @@ public class MagicianSkills : MonoBehaviour
             Firepillar();
         }
         if(Input.GetKeyDown("3") && _skill3) {
-            PoisionCloud();
+            PoisonCloud();
         }
     }
 
@@ -41,7 +41,7 @@ public class MagicianSkills : MonoBehaviour
 
     }
 
-    private void PoisionCloud() {
+    private void PoisonCloud() {
 
     }
     
