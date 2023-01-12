@@ -7,10 +7,12 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Job_Menu;
     [SerializeField] private GameObject Snail;
     [SerializeField] private GameObject Blue_Snail;
     [SerializeField] private GameObject Shroom;
     [SerializeField] private GameObject Mano;
+    
     private int _lvl;
     private int _wave;
     private Level1 _lvl1;
@@ -48,14 +50,19 @@ public class SpawnManager : MonoBehaviour
             _lvlWave = _lvl1.getWave(_wave);
             _timer = 0;
         }
+        if (_wave == 2) {
+            Instantiate(Job_Menu, new Vector3(0, 0, 0),Quaternion.identity);
+        }
         if (_lvl < 3 && _wave <= 6 || _lvl == 3 && _wave <= 8)
         {
             handleSpwan();
         }
         else
         {
-            _lvl++;
-            _wave = 1;
+            
+            // _lvl++;
+            // _wave = 1;
+
             // if (_lvl == 2)
             // {
             //     _lvlWave = _lvl2.getWave(_wave);

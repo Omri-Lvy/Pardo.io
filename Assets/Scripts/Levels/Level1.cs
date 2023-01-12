@@ -10,7 +10,7 @@ namespace Scripts.Levels
             List<WaveMob> wave = new List<WaveMob>();
             if (waveNum == 1)
             {
-                WaveMob mob1 = new WaveMob("Snail", 1f, 15);
+                WaveMob mob1 = new WaveMob("Snail", 1f, 1);
                 wave.Add(mob1);
             }
             else if (waveNum == 2)
