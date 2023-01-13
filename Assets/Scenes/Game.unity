@@ -236,26 +236,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
   m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &436514950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4050680717114121631, guid: 6440b5a0b6c0e0d439bc9884dbe5c6d9, type: 3}
-  m_PrefabInstance: {fileID: 1750929585}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &436514959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436514950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d30ef8d0dbe44fd9edb14b6fc017ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireball: {fileID: 6621044961275106557, guid: 3400322a93214e14caf6fa77b838ccb6, type: 3}
-  firepillar: {fileID: 3951058116000299342, guid: 8019ff3682e5d4f43813c6281526c76d, type: 3}
-  poisionCloud: {fileID: 8971600940987924012, guid: ea297d11e2085824686ae711bd8bbf6f, type: 3}
 --- !u!1 &477257886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,12 +1398,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4050680717114121602, guid: 6440b5a0b6c0e0d439bc9884dbe5c6d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4050680717114121631, guid: 6440b5a0b6c0e0d439bc9884dbe5c6d9, type: 3}
       propertyPath: m_Name
       value: PardoMagician
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9008054299481910121, guid: 6440b5a0b6c0e0d439bc9884dbe5c6d9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6440b5a0b6c0e0d439bc9884dbe5c6d9, type: 3}
 --- !u!1 &1850066222
 GameObject:

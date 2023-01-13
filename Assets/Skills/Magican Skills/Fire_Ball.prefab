@@ -120,6 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f3c30af75db4e02b698e8bd911ee30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 5683789809468216739}
+  expRadius: 1.5
+  damage: 30
 --- !u!136 &-2780346328953912573
 CapsuleCollider:
   m_ObjectHideFlags: 0

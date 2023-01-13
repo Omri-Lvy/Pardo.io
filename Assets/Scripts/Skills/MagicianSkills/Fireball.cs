@@ -7,6 +7,9 @@ public class Fireball : MonoBehaviour
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody rb;
+    [SerializeField] public Animator _animator;
+    public float expRadius;
+    public int damage;
     
     // Start is called before the first frame update
     void Start()
@@ -22,8 +25,9 @@ public class Fireball : MonoBehaviour
     void Update()
     {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        if (screenPosition.y > Screen.height || screenPosition.y < 0)
-        Destroy(this.gameObject);
+        if (screenPosition.y > Screen.height || screenPosition.y < 0) {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +35,16 @@ public class Fireball : MonoBehaviour
         if (other.tag == "Enemy")
         {
             if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
-                Destroy(this.gameObject);
+                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                _animator.Play("Fire_Ball_hit");
+                Destroy(gameObject, 1f);
+                Collider[] enemies = Physics.OverlapSphere (gameObject.transform.position, expRadius);
+                foreach (Collider collider in enemies)
+                {
+                    if(collider != null && collider.tag == "Enemy") {
+                        collider.gameObject.GetComponent<Enemy>().getHit(damage);
+                    }
+                }
             }
         }
     }
