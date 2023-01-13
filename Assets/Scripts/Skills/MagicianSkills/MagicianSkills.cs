@@ -68,7 +68,7 @@ public class MagicianSkills : MonoBehaviour
     }
 
     private void PoisonCloud() {
-
+        Instantiate(poisonCloud, _transform.position, _transform.rotation);
     }
     
 }
