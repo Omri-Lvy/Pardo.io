@@ -165,8 +165,8 @@ public class SpawnManager : MonoBehaviour
     private float getRandomY()
     {
         float yPos = Random.Range(-6f, 6f);
-        if (yPos < 0) yPos -= 8.5f;
-        else if (yPos >= 0) yPos += 8.5f;
+        if (yPos < 0) yPos -= 6.5f;
+        else if (yPos >= 0) yPos += 6.5f;
         return yPos;
     }
 }

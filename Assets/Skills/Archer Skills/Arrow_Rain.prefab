@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5020557983690775131}
   - component: {fileID: 2679614088881325346}
   - component: {fileID: -1639707494211750828}
+  - component: {fileID: 2650619305761539748}
+  - component: {fileID: -4645213818079516984}
   m_Layer: 0
   m_Name: Arrow_Rain
   m_TagString: Untagged
@@ -105,3 +107,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2650619305761539748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438511008552923662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c57507a0a44047d4ba31ca3f25b2db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2679614088881325346}
+  expRadius: 2.5
+  damage: 20
+  consistTime: 6
+--- !u!136 &-4645213818079516984
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438511008552923662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.825
+  m_Height: 4.21
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
