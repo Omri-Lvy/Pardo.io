@@ -83,10 +83,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8828908344680992980, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
 --- !u!95 &5623339151314764494 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8828908344680992978, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
   m_PrefabInstance: {fileID: 3786551430095606300}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5623339151314764500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8828908344680992968, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
+  m_PrefabInstance: {fileID: 3786551430095606300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7977116684800172578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623339151314764500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f910f663359d94305909aea11c89e340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  darkness: {fileID: 2711545027975446913, guid: e8bb4b91525c799429822fb3346871c7, type: 3}
+  shuriken: {fileID: 5867500911970835822, guid: 4743bbe4a1c4d21479369b66d645e94a, type: 3}
+  x: {fileID: 7427054633540896403, guid: 652bd5f7ff5c54445aa4d2d01eaea950, type: 3}
+  darknessCDtime: 5
+  shurikenCDtime: 5
+  xCDtime: 5
