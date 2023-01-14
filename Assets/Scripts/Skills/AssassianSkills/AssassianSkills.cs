@@ -59,7 +59,7 @@ public class AssassianSkills : MonoBehaviour
     private void Darkness() {
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z += 10;
-        mousePos.y += darkness.GetComponent<CapsuleCollider>().height / 2.1f; // This offsets the start position
+        mousePos.y += darkness.GetComponent<CapsuleCollider>().height / 3f;
         Instantiate(darkness, mousePos, Quaternion.identity);
     }
 

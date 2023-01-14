@@ -18,6 +18,7 @@ public class Shuriken : MonoBehaviour
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePosition - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * 5;
+        Invoke("playBlurr", 0.1f);
     }
 
     // Update is called once per frame
@@ -37,5 +38,9 @@ public class Shuriken : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().getHit(damage);
             }
         }
+    }
+
+    private void playBlurr() {
+        _animator.Play("Giant_Shurikan_blurr");
     }
 }

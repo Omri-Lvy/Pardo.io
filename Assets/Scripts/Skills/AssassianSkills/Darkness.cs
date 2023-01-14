@@ -8,22 +8,17 @@ public class Darkness : MonoBehaviour
     public float expRadius;
     public int damage;
     public float consistTime;
-    private bool didHit = false;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
-                if(!didHit) {
-                    Destroy(gameObject, consistTime);
-                    InvokeRepeating("darknessDamage", 0f, 0.5f);
-                    didHit = true;
-                }
-            }
-        }
+    private void Start() {
+        InvokeRepeating("darknessDamage", 0f, 0.7f);
+        Invoke("clearout", consistTime + 0.04f);
     }
 
+    private void clearout() {
+        Destroy(gameObject, 0.4f);
+        _animator.Play("Darkness_Domain_clearout");
+    }
+        
     private void darknessDamage() {
         Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, expRadius);
         foreach (Collider collider in enemies)
