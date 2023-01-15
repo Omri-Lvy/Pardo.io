@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Scripts;
 using Scripts.Levels;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -39,6 +40,7 @@ public class SpawnManager : MonoBehaviour
     private Levels _levels;
     private CanvasGroup _canvasgroup;
     private GameObject pardo;
+    private bool _jobSelected = false;
 
 
     // Start is called before the first frame update
@@ -73,9 +75,13 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().isDead())
+        {
+            Application.Quit();
+        }
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
-        if ((_timer > 2 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
+        if ((_timer > 45 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
         {
             _wave += 1;
             _lvlWave = _levels.getWave(_lvl,_wave);
@@ -85,16 +91,21 @@ public class SpawnManager : MonoBehaviour
         {
             _lvl++;
             _wave = 1;
-            if (_lvl == 2 && _wave == 1)
-            {
-                Time.timeScale = 0;
-                _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
-                _canvasgroup.alpha = 1f;
-                _canvasgroup.interactable = true;
-                isPaused = true;
-            }
+            Debug.Log(_lvl);
+            handleSpwan();
         }
-        handleSpwan();
+        else
+        {
+            handleSpwan();
+        }
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getLevel() == 3 && !_jobSelected)
+        {
+            Time.timeScale = 0;
+            _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
+            _canvasgroup.alpha = 1f;
+            _canvasgroup.interactable = true;
+            isPaused = true;
+        }
     }
 
     private void handleSpwan()
@@ -186,10 +197,9 @@ public class SpawnManager : MonoBehaviour
         _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
         _canvasgroup.alpha = 0;
         _canvasgroup.interactable = false;
-      
+        _jobSelected = true;
         Time.timeScale = 1f;
         isPaused = false;
-        //GameObject.FindGameObjectWithTag("Player").GameObject.setActive(false);
     }
 
 }

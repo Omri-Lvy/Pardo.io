@@ -45,33 +45,33 @@ namespace Scripts.Levels
 
         private List<WaveMob> buildWave1()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 40);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 30);
             return new List<WaveMob>() { mob1 };
         }
         private List<WaveMob> buildWave2()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 25);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 23);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 18);
+            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 16);
             return new List<WaveMob>() { mob1, mob2 };
         }
         private List<WaveMob> buildWave3()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 23);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 37);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 14);
+            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 26);
             return new List<WaveMob>() { mob1, mob2 };
         }
         private List<WaveMob> buildWave4()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 13);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 26);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 17);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 8);
+            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 16);
+            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 13);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave5()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 20);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 27);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 17);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 10);
+            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 15);
+            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 9);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildBoss()
