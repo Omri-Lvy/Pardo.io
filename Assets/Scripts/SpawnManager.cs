@@ -155,7 +155,8 @@ public class SpawnManager : MonoBehaviour
             pardo.GetComponent<Player>().getStats().getSpeed(),
             pardo.GetComponent<Player>().getStats().getXp(),
             pardo.GetComponent<Player>().getStats().getMaxXp(),
-            pardo.GetComponent<Player>().getStats().getLevel()
+            pardo.GetComponent<Player>().getStats().getLevel(),
+            pardo.GetComponent<Player>().getStats().getSkills()
             );
 
         Destroy(pardo);

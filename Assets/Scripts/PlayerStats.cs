@@ -32,7 +32,7 @@ namespace Scripts
             _skills[0] = true;
         }
 
-        public PlayerStats(float currentHealth, float maxHealth, bool isDead, float attack, float def, float speed, int exp, int maxExp, int level)
+        public PlayerStats(float currentHealth, float maxHealth, bool isDead, float attack, float def, float speed, int exp, int maxExp, int level, bool[] skills)
         {
             _currentHealth = currentHealth;
             _maxHealth = maxHealth;
@@ -43,6 +43,7 @@ namespace Scripts
             _exp = exp;
             _maxExp = maxExp;
             _level = level;
+            _skills = skills;
         }
 
         public void getHit(float attack)
