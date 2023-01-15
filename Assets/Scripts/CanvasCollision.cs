@@ -39,7 +39,7 @@ public class CanvasCollision : MonoBehaviour
 
     private void HandleCooldownButtons() {
         PlayerStats stats = _player.GetComponent<Player>().getStats();
-        if(_player.name == "Pardo") {
+        if(_player.name == "Pardo(Clone)" || _player.name == "Pardo") {
             button1.SetActive(false);
             button2.SetActive(false);
             button3.SetActive(false);

@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
         //Reset position to (0,0,0)
         stats = new PlayerStats(_attack, _walkingSpeed, _def);
         transform.position = new Vector3(0, 0, 0);
-        Debug.Log("This works again");
 
     }
 
