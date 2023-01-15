@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         if (_stats.isDead())
         {
             _animator.Play(_dieAnim);

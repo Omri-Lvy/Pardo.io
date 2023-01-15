@@ -16,6 +16,7 @@ public class CanvasCollision : MonoBehaviour
     }
     
     private void Update() {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _canvasgroup = _canvas.GetComponent<CanvasGroup>();
         float playerX = _player.transform.position.x;
         float playerY = _player.transform.position.y;
