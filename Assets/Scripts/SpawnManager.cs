@@ -37,6 +37,7 @@ public class SpawnManager : MonoBehaviour
     private List<WaveMob> _lvlWave;
     private Levels _levels;
     private CanvasGroup _canvasgroup;
+    private GameObject pardo;
 
 
     // Start is called before the first frame update
@@ -142,10 +143,10 @@ public class SpawnManager : MonoBehaviour
             Destroy(bullet);
         }
         
-        GameObject pardo = GameObject.FindGameObjectWithTag("Player");
+        pardo = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 currentPosition = pardo.transform.position;
-        Quaternion currentRotation = pardo.transform.rotation;
+        Vector3 currentPosition = new Vector3(pardo.transform.position.x,pardo.transform.position.y,pardo.transform.position.z) ;
+        Quaternion currentRotation = new Quaternion(pardo.transform.rotation.x,pardo.transform.rotation.y,pardo.transform.rotation.z,pardo.transform.rotation.w);
         PlayerStats currentStats = new PlayerStats(pardo.GetComponent<Player>().getStats().getCurrentHealth(),
             pardo.GetComponent<Player>().getStats().getMaxHealth(),
             pardo.GetComponent<Player>().getStats().isDead(),
@@ -159,17 +160,17 @@ public class SpawnManager : MonoBehaviour
 
         Destroy(pardo);
 
-        GameObject chosenPardo = pardo;
+        GameObject selectedPardo;
 
         if (i == 1) {
-            chosenPardo = PardoMage;
+            selectedPardo = Instantiate(PardoMage, currentPosition, currentRotation);
         } else if (i == 2) {
-            chosenPardo = PardoArcher;
+            selectedPardo = Instantiate(PardoArcher, currentPosition, currentRotation);
         } else if (i == 3) {
-            chosenPardo = PardoAssassin;
+            selectedPardo = Instantiate(PardoAssassin, currentPosition, currentRotation);
+        } else {
+            selectedPardo = Instantiate(Pardo, currentPosition, currentRotation); 
         }
-
-        GameObject selectedPardo = Instantiate(chosenPardo, currentPosition, currentRotation);
         selectedPardo.transform.position = currentPosition;
         selectedPardo.transform.rotation = currentRotation;
         selectedPardo.GetComponent<Player>().setStats(currentStats);
