@@ -1003,6 +1003,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Pig
+      value: 
+      objectReference: {fileID: 2424368327993397416, guid: ebc4251ac356f1e4cbc56ff5f91fd94a, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Fairy
+      value: 
+      objectReference: {fileID: 401459805807603850, guid: ee3e1fc822b7bda418e185478b79acee, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Slime
+      value: 
+      objectReference: {fileID: 5006733729294362843, guid: a63d4aeaaa6c6094ca2cb37a602569df, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Mushmom
+      value: 
+      objectReference: {fileID: 3519880593400868286, guid: c88a03d5f05558b46bd3e939e3b95ef9, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Red_Snail
+      value: 
+      objectReference: {fileID: 6038670812453461328, guid: a713a97c41f35604eb37285bc2bd2a39, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: King_Slime
+      value: 
+      objectReference: {fileID: 6729996607611508668, guid: 6f07cfbea17e7ca409269bd0b4162be5, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Ribbon_Pig
+      value: 
+      objectReference: {fileID: 9141020332084165127, guid: 30f87d5a59971dc449e2568be2639794, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Blue_Mashroom
+      value: 
+      objectReference: {fileID: 8575902240204731577, guid: 7821eeda007bc4d4aafe1a549245ea56, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Green_Mashroom
+      value: 
+      objectReference: {fileID: 5150628916000896762, guid: a0293dfcc6c629b48be369001810e4cf, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Orange_Mashroom
+      value: 
+      objectReference: {fileID: 7047391457956141058, guid: 36b6ea61e84ea0e49a509e27685f3f7e, type: 3}
+    - target: {fileID: 292732976849237472, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
+      propertyPath: Renegade_Shroom
+      value: 
+      objectReference: {fileID: 1486293951032774777, guid: e7314f202b498974f9b07f5aa8e08e8e, type: 3}
     - target: {fileID: 292732976849237475, guid: 8cd1ea7448534439ab6f1eb04e454c65, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -11,14 +11,23 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject Blue_Snail;
     [SerializeField] private GameObject Shroom;
     [SerializeField] private GameObject Mano;
+    [SerializeField] private GameObject Red_Snail;
+    [SerializeField] private GameObject Orange_Mashroom;
+    [SerializeField] private GameObject Blue_Mashroom;
+    [SerializeField] private GameObject Pig;
+    [SerializeField] private GameObject Renegade_Shroom;
+    [SerializeField] private GameObject Mushmom;
+    [SerializeField] private GameObject Ribbon_Pig;
+    [SerializeField] private GameObject Slime;
+    [SerializeField] private GameObject Green_Mashroom;
+    [SerializeField] private GameObject Fairy;
+    [SerializeField] private GameObject King_Slime;
     private int _lvl;
     private int _wave;
-    private Level1 _lvl1;
-    // private Level2 _lvl2;
-    // private Level3 _lvl3;
     private float _timer;
     private Dictionary<String, GameObject> MOBS;
     private List<WaveMob> _lvlWave;
+    private Levels _levels;
 
 
     // Start is called before the first frame update
@@ -26,7 +35,7 @@ public class SpawnManager : MonoBehaviour
     {
         _lvl = 1;
         _wave = 1;
-        _lvl1 = new Level1();
+        _levels = new Levels();
         _timer = 0;
         MOBS = new Dictionary<string, GameObject>()
         {
@@ -35,20 +44,24 @@ public class SpawnManager : MonoBehaviour
             {"Shroom",Shroom},
             {"Mano",Mano},
         };
-        _lvlWave = _lvl1.getWave(1);
+        _lvlWave = _levels.getWave(_lvl,_wave);
+        foreach (WaveMob mob in _lvlWave)
+        {
+            Debug.Log(mob.getMonster());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         _timer += 1 * Time.deltaTime;
-        if (_timer > 50)
+        if (_timer > 40)
         {
             _wave += 1;
-            _lvlWave = _lvl1.getWave(_wave);
+            _lvlWave = _levels.getWave(_lvl,_wave);
             _timer = 0;
         }
-        if (_lvl < 3 && _wave <= 6 || _lvl == 3 && _wave <= 8)
+        if (!_levels.getIsBoss(_lvl))
         {
             handleSpwan();
         }
@@ -56,101 +69,19 @@ public class SpawnManager : MonoBehaviour
         {
             _lvl++;
             _wave = 1;
-            // if (_lvl == 2)
-            // {
-            //     _lvlWave = _lvl2.getWave(_wave);
-            // }
-            // else if (_lvl == 3)
-            // {
-            //     _lvlWave = _lvl3.getWave(_wave);
-            // }
         }
-       
     }
 
-    void handleSpwan()
+    private void handleSpwan()
     {
-        if (_lvl == 1)
-        {
-            if (_wave == 1)
+        foreach (WaveMob mob in _lvlWave) {
+            if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() < mob.getMax())
             {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
+                Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
+                mob.increaseInstantiateCounter();
+                mob.setLastInstantiate(_timer);
             }
-            else if (_wave == 2)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        float xPos = Random.Range(-5.5f, 5.5f);
-                        float yPos = Random.Range(-6f, 6f);
-                        if (xPos < 0) xPos -= 4.6f;
-                        else if (xPos >= 0) xPos += 4.6f;
-                        if (yPos < 0) yPos -= 8.5f;
-                        else if (yPos >= 0) yPos += 8.5f;
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else if (_wave == 3)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else if (_wave == 4)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else if (_wave == 5)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                } 
-            }
-        } 
+        }
     }
 
     private float getRandomX()
@@ -159,14 +90,13 @@ public class SpawnManager : MonoBehaviour
         if (xPos < 0) xPos -= 4.6f;
         else if (xPos >= 0) xPos += 4.6f;
         return xPos;
-        
     }
 
     private float getRandomY()
     {
         float yPos = Random.Range(-6f, 6f);
-        if (yPos < 0) yPos -= 6.5f;
-        else if (yPos >= 0) yPos += 6.5f;
+        if (yPos < 0) yPos -= 4.6f;
+        else if (yPos >= 0) yPos += 4.6f;
         return yPos;
     }
 }
