@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Scripts;
 using Scripts.Levels;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,12 +14,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject PardoMage;
     [SerializeField] private GameObject PardoArcher;
     [SerializeField] private GameObject PardoAssassin;
-    [SerializeField] private GameObject Job_Menu;
     [SerializeField] private GameObject Snail;
     [SerializeField] private GameObject Blue_Snail;
     [SerializeField] private GameObject Shroom;
     [SerializeField] private GameObject Mano;
-<<<<<<< Updated upstream
     [SerializeField] private GameObject Red_Snail;
     [SerializeField] private GameObject Orange_Mashroom;
     [SerializeField] private GameObject Blue_Mashroom;
@@ -29,20 +29,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject Green_Mashroom;
     [SerializeField] private GameObject Fairy;
     [SerializeField] private GameObject King_Slime;
-=======
-    
     private GameObject CanvasInstance;
->>>>>>> Stashed changes
     private int _lvl;
     private int _wave;
     private float _timer;
     private Dictionary<String, GameObject> MOBS;
     private List<WaveMob> _lvlWave;
-<<<<<<< Updated upstream
     private Levels _levels;
-=======
     private CanvasGroup _canvasgroup;
->>>>>>> Stashed changes
 
 
     // Start is called before the first frame update
@@ -78,25 +72,28 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
-        if (_timer > 50)
+        if ((_timer > 2 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
         {
             _wave += 1;
-            _lvlWave = _lvl1.getWave(_wave);
+            _lvlWave = _levels.getWave(_lvl,_wave);
             _timer = 0;
         }
-        if (_lvl < 3 && _wave <= 6 || _lvl == 3 && _wave <= 8)
-        {
-            handleSpwan();
-        }
-        else
+        else if (_levels.getIsBoss(_lvl) && !enemy)
         {
             _lvl++;
             _wave = 1;
+            if (_lvl == 2 && _wave == 1)
+            {
+                Time.timeScale = 0;
+                _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
+                _canvasgroup.alpha = 1f;
+                _canvasgroup.interactable = true;
+            }
         }
-       
+        handleSpwan();
     }
 
-    void handleSpwan()
+    private void handleSpwan()
     {
         if (_levels.getIsBoss(_lvl))
         {
@@ -105,100 +102,64 @@ public class SpawnManager : MonoBehaviour
             {
                 Destroy(mob);
             }
-            else if (_wave == 2)
-            {
-                foreach (WaveMob mob in _lvlWave)
+        }
+
+        if (_lvlWave != null)
+        {
+            foreach (WaveMob mob in _lvlWave) {
+                if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() < mob.getMax())
                 {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        float xPos = Random.Range(-5.5f, 5.5f);
-                        float yPos = Random.Range(-6f, 6f);
-                        if (xPos < 0) xPos -= 4.6f;
-                        else if (xPos >= 0) xPos += 4.6f;
-                        if (yPos < 0) yPos -= 8.5f;
-                        else if (yPos >= 0) yPos += 8.5f;
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
+                    Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
+                    mob.increaseInstantiateCounter();
+                    mob.setLastInstantiate(_timer);
                 }
             }
-            else if (_wave == 3)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else if (_wave == 4)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else if (_wave == 5)
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
-            }
-            else
-            {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                } 
-            }
-        } 
+        }
     }
 
-    private float getRandomX() {
+    private float getRandomX()
+    {
         float xPos = Random.Range(-5.5f, 5.5f);
         if (xPos < 0) xPos -= 4.6f;
         else if (xPos >= 0) xPos += 4.6f;
         return xPos;
     }
 
-    private float getRandomY() {
+    private float getRandomY()
+    {
         float yPos = Random.Range(-6f, 6f);
         if (yPos < 0) yPos -= 4.6f;
         else if (yPos >= 0) yPos += 4.6f;
         return yPos;
     }
 
-    public void selectCharacter(int i) {
+    public void selectCharacter(int i)
+    {
+
+        GameObject[] bulletsArr = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bulletsArr)
+        {
+            Destroy(bullet);
+        }
         
-        Debug.Log(i);
         GameObject pardo = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 currentPosition = pardo.transform.position;
         Quaternion currentRotation = pardo.transform.rotation;
+        PlayerStats currentStats = new PlayerStats(pardo.GetComponent<Player>().getStats().getCurrentHealth(),
+            pardo.GetComponent<Player>().getStats().getMaxHealth(),
+            pardo.GetComponent<Player>().getStats().isDead(),
+            pardo.GetComponent<Player>().getStats().getAttack(),
+            pardo.GetComponent<Player>().getStats().getDef(),
+            pardo.GetComponent<Player>().getStats().getSpeed(),
+            pardo.GetComponent<Player>().getStats().getXp(),
+            pardo.GetComponent<Player>().getStats().getMaxXp(),
+            pardo.GetComponent<Player>().getStats().getLevel()
+            );
 
         Destroy(pardo);
 
-        GameObject chosenPardo = Pardo;
+        GameObject chosenPardo = pardo;
 
         if (i == 1) {
             chosenPardo = PardoMage;
@@ -209,14 +170,16 @@ public class SpawnManager : MonoBehaviour
         }
 
         GameObject selectedPardo = Instantiate(chosenPardo, currentPosition, currentRotation);
-        pardo.transform.position = currentPosition;
-        pardo.transform.rotation = currentRotation;
+        selectedPardo.transform.position = currentPosition;
+        selectedPardo.transform.rotation = currentRotation;
+        selectedPardo.GetComponent<Player>().setStats(currentStats);
 
     }
 
     public void resume() {
         
-        _canvasgroup.alpha = 0f;
+        _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
+        _canvasgroup.alpha = 0;
         _canvasgroup.interactable = false;
       
         Time.timeScale = 1f;

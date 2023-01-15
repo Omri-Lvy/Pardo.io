@@ -65,6 +65,18 @@ public class Player : MonoBehaviour
         return stats;
     }
 
+    public void setStats(PlayerStats stats)
+    {
+        this.stats.setCurrenthealth(stats.getCurrentHealth());
+        this.stats.setAttack(stats.getAttack());
+        this.stats.setDef(stats.getDef());
+        this.stats.setLevel(stats.getLevel());
+        this.stats.setSpeed(stats.getSpeed());
+        this.stats.setXP(stats.getXp());
+        this.stats.setMaxXp(stats.getMaxXp());
+        this.stats.setMaxHealth(stats.getMaxHealth());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")

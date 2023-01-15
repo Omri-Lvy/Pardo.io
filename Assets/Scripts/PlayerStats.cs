@@ -29,6 +29,19 @@ namespace Scripts
             _level = 1;
         }
 
+        public PlayerStats(float currentHealth, float maxHealth, bool isDead, float attack, float def, float speed, int exp, int maxExp, int level)
+        {
+            _currentHealth = currentHealth;
+            _maxHealth = maxHealth;
+            _isDead = isDead;
+            _attack = attack;
+            _def = def;
+            _speed = speed;
+            _exp = exp;
+            _maxExp = maxExp;
+            _level = level;
+        }
+
         public void getHit(float attack)
         {
             _currentHealth -= attack * (100/(100 + _def));
@@ -38,6 +51,30 @@ namespace Scripts
                 _isDead = true;
 
             }
+        }
+
+        public void setXP(int xp)
+        {
+            _exp = xp;
+        }
+        public void setLevel(int lvl)
+        {
+            _level = lvl;
+        }
+
+        public void setMaxXp(int maxXp)
+        {
+            _maxExp = maxXp;
+        }
+
+        public void setMaxHealth(float maxHealth)
+        {
+            _maxHealth = maxHealth;
+        }
+
+        public float getMaxHealth()
+        {
+            return _maxHealth;
         }
 
         public void setCurrenthealth(float newHealth)
