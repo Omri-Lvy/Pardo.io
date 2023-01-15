@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicianSkills : MonoBehaviour
 {
-    private bool _skill2, _skill3;
+    private bool [] _skills;
     [SerializeField] private GameObject fireball;
     [SerializeField] private GameObject firepillar;
     [SerializeField] private GameObject poisonCloud;
@@ -25,31 +25,31 @@ public class MagicianSkills : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         _transform = transform.Find("Aim");
-        _skill2 = true;
-        _skill3 = true;
-        fireballCD = new Cooldown(fireballCDtime);
-        firepillarCD = new Cooldown(firepillarCDtime);
-        poisonCloudCD = new Cooldown(poisonCloudCDtime);
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
+        fireballCD = new Cooldown(fireballCDtime, '1');
+        firepillarCD = new Cooldown(firepillarCDtime, '2');
+        poisonCloudCD = new Cooldown(poisonCloudCDtime, '3');
     }
 
     // Update is called once per frame
     void Update()
     {
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
         // Handle CDs
         fireballCD.HandleCooldown();
         firepillarCD.HandleCooldown();
         poisonCloudCD.HandleCooldown();
 
         // Handle input
-        if(Input.GetKeyDown("1") && fireballCD.skillReady()) {
+        if(Input.GetKeyDown("1") && _skills[0] && fireballCD.skillReady()) {
             fireballCD.SetCooldown(true);
             Fireball();
         }
-        if(Input.GetKeyDown("2") && _skill2 && firepillarCD.skillReady()) {
+        if(Input.GetKeyDown("2") && _skills[1] && firepillarCD.skillReady()) {
             firepillarCD.SetCooldown(true);
             Firepillar();
         }
-        if(Input.GetKeyDown("3") && _skill3 && poisonCloudCD.skillReady()) {
+        if(Input.GetKeyDown("3") && _skills[2] && poisonCloudCD.skillReady()) {
             poisonCloudCD.SetCooldown(true);
             PoisonCloud();
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArcherSkills : MonoBehaviour
 {
-    private bool _waveShot, _arrowRain, _homing;
+    private bool [] _skills;
     [SerializeField] private GameObject arrowRain;
     [SerializeField] private GameObject waveShot;
     [SerializeField] private GameObject homing;
@@ -25,32 +25,31 @@ public class ArcherSkills : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         _transform = transform.Find("Aim");
-        _waveShot = true;
-        _arrowRain = true;
-        _homing = true;
-        arrowRainCD = new Cooldown(arrowRainCDtime);
-        waveShotCD = new Cooldown(waveShotCDtime);
-        homingCD = new Cooldown(homingCDtime);
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
+        arrowRainCD = new Cooldown(arrowRainCDtime, '3');
+        waveShotCD = new Cooldown(waveShotCDtime, '1');
+        homingCD = new Cooldown(homingCDtime, '2');
     }
 
     // Update is called once per frame
     void Update()
     {
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
         // Handle CDs
         arrowRainCD.HandleCooldown();
         waveShotCD.HandleCooldown();
         homingCD.HandleCooldown();
 
         // Handle input
-        if(Input.GetKeyDown("1") && _waveShot && waveShotCD.skillReady()) {
+        if(Input.GetKeyDown("1") && _skills[0] && waveShotCD.skillReady()) {
             waveShotCD.SetCooldown(true);
             WaveShot();
         }
-        if(Input.GetKeyDown("3") && _arrowRain && arrowRainCD.skillReady()) {
+        if(Input.GetKeyDown("3") && _skills[2] && arrowRainCD.skillReady()) {
             arrowRainCD.SetCooldown(true);
             ArrowRain();
         }
-        if(Input.GetKeyDown("2") && _homing && homingCD.skillReady()) {
+        if(Input.GetKeyDown("2") && _skills[1] && homingCD.skillReady()) {
             homingCD.SetCooldown(true);
             Homing();
         }

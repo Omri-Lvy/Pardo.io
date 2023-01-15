@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AssassianSkills : MonoBehaviour
 {
-    private bool _darkness, _x, _shuriken;
+    private bool [] _skills;
     [SerializeField] private GameObject darkness;
     [SerializeField] private GameObject shuriken;
     [SerializeField] private GameObject x;
@@ -25,32 +25,31 @@ public class AssassianSkills : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         _transform = transform.Find("Aim");
-        _shuriken = true;
-        _darkness = true;
-        _x = true;
-        darknessCD = new Cooldown(darknessCDtime);
-        shurikenCD = new Cooldown(shurikenCDtime);
-        xCD = new Cooldown(xCDtime);
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
+        darknessCD = new Cooldown(darknessCDtime, '3');
+        shurikenCD = new Cooldown(shurikenCDtime, '1');
+        xCD = new Cooldown(xCDtime, '2');
     }
 
     // Update is called once per frame
     void Update()
     {
+        _skills = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getSkills();
         // Handle CDs
         darknessCD.HandleCooldown();
         shurikenCD.HandleCooldown();
         xCD.HandleCooldown();
 
         // Handle input
-        if(Input.GetKeyDown("1") && _shuriken && shurikenCD.skillReady()) {
+        if(Input.GetKeyDown("1") && _skills[0] && shurikenCD.skillReady()) {
             shurikenCD.SetCooldown(true);
             Shuriken();
         }
-        if(Input.GetKeyDown("3") && _darkness && darknessCD.skillReady()) {
+        if(Input.GetKeyDown("3") && _skills[2] && darknessCD.skillReady()) {
             darknessCD.SetCooldown(true);
             Darkness();
         }
-        if(Input.GetKeyDown("2") && _x && xCD.skillReady()) {
+        if(Input.GetKeyDown("2") && _skills[1] && xCD.skillReady()) {
             xCD.SetCooldown(true);
             X();
         }

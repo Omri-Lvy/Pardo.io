@@ -14,6 +14,7 @@ namespace Scripts
         private int _exp;
         private int _maxExp;
         private int _level;
+        private bool [] _skills;
 
 
         public PlayerStats(float attack, float speed, float def)
@@ -27,6 +28,8 @@ namespace Scripts
             _exp = 0;
             _maxExp = 25;
             _level = 1;
+            _skills = new bool[3];
+            _skills[0] = true;
         }
 
         public PlayerStats(float currentHealth, float maxHealth, bool isDead, float attack, float def, float speed, int exp, int maxExp, int level)
@@ -161,7 +164,22 @@ namespace Scripts
             GameObject.Find("XP_Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
             GameObject.Find("Health_Bar").GetComponent<healthBar>().changeMaxVal(_maxHealth);
             GameObject.Find("Level_Text").GetComponent<LevelText>().changeVal(_level);
+            Debug.Log("Leveled up! Now level: " + _level);
+
+            if(_level == 2) {
+                _skills[1] = true;
+            }
+            if(_level == 3) {
+                _skills[2] = true;
+            }
         }
 
+        public bool [] getSkills() {
+            return _skills;
+        }
+
+        public void setSkill(int i, bool val) {
+            _skills[i] = val;
+        }
     }
 }
