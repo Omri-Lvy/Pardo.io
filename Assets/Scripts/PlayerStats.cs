@@ -30,6 +30,8 @@ namespace Scripts
             _level = 1;
             _skills = new bool[3];
             _skills[0] = true;
+            _skills[1] = false;
+            _skills[2] = false;
         }
 
         public PlayerStats(float currentHealth, float maxHealth, bool isDead, float attack, float def, float speed, int exp, int maxExp, int level, bool[] skills)
@@ -180,6 +182,10 @@ namespace Scripts
 
         public bool [] getSkills() {
             return _skills;
+        }
+
+        public bool getSkill(int i) {
+            return _skills[i];
         }
 
         public void setSkill(int i, bool val) {

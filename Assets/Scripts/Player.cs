@@ -14,11 +14,12 @@ public class Player : MonoBehaviour
 
     public Quaternion q;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //Reset position to (0,0,0)
         stats = new PlayerStats(_attack, _walkingSpeed, _def);
         transform.position = new Vector3(0, 0, 0);
+        Debug.Log("This works again");
 
     }
 
@@ -75,10 +76,9 @@ public class Player : MonoBehaviour
         this.stats.setXP(Pstats.getXp());
         this.stats.setMaxXp(Pstats.getMaxXp());
         this.stats.setMaxHealth(Pstats.getMaxHealth());
-        bool [] skills = Pstats.getSkills();
-        this.stats.setSkill(0, skills[0]);
-        this.stats.setSkill(1, skills[1]);
-        this.stats.setSkill(2, skills[2]);
+        this.stats.setSkill(0, true);
+        this.stats.setSkill(1, false);
+        this.stats.setSkill(2, false);
     }
 
     private void OnTriggerEnter(Collider other)

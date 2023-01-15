@@ -30,6 +30,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject Fairy;
     [SerializeField] private GameObject King_Slime;
     private GameObject CanvasInstance;
+    public bool isPaused;
     private int _lvl;
     private int _wave;
     private float _timer;
@@ -47,6 +48,7 @@ public class SpawnManager : MonoBehaviour
         _wave = 1;
         _levels = new Levels();
         _timer = 0;
+        isPaused = false;
         MOBS = new Dictionary<string, GameObject>()
         {
             {"Snail",Snail},
@@ -89,6 +91,7 @@ public class SpawnManager : MonoBehaviour
                 _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
                 _canvasgroup.alpha = 1f;
                 _canvasgroup.interactable = true;
+                isPaused = true;
             }
         }
         handleSpwan();
@@ -185,6 +188,7 @@ public class SpawnManager : MonoBehaviour
         _canvasgroup.interactable = false;
       
         Time.timeScale = 1f;
+        isPaused = false;
         //GameObject.FindGameObjectWithTag("Player").GameObject.setActive(false);
     }
 

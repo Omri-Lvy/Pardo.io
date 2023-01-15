@@ -27,19 +27,22 @@ public class CanvasCollision : MonoBehaviour
     [SerializeField] private Sprite AssassinSkill2;
     [SerializeField] private Sprite AssassinSkill3;
 
+    [SerializeField] private SpawnManager manager;
+
     private void Start() {
         _player = GameObject.FindGameObjectWithTag("Player");
         _prevPlayer = _player;
         _canvasgroup = _canvas.GetComponent<CanvasGroup>();
-        HandleCooldownButtons(); // Change the buttons to the according class
+        // Change the buttons to the according class
+        HandleCooldownButtons();
     }
 
     private void HandleCooldownButtons() {
         PlayerStats stats = _player.GetComponent<Player>().getStats();
         if(_player.name == "Pardo") {
-            button1.SetActive(true);
-            button2.SetActive(true);
-            button3.SetActive(true);
+            button1.SetActive(false);
+            button2.SetActive(false);
+            button3.SetActive(false);
         } else {
             bool [] skills = stats.getSkills();
             button1.SetActive(skills[0]);
@@ -66,7 +69,13 @@ public class CanvasCollision : MonoBehaviour
     private void Update() {
         _player = GameObject.FindGameObjectWithTag("Player");
         
-        HandleCooldownButtons();
+        if(!manager.isPaused) {
+            HandleCooldownButtons();
+        } else {
+            button1.SetActive(true);
+            button2.SetActive(true);
+            button3.SetActive(true);
+        }
         _canvasgroup = _canvas.GetComponent<CanvasGroup>();
         float playerX = _player.transform.position.x;
         float playerY = _player.transform.position.y;
