@@ -75,9 +75,9 @@ public class Player : MonoBehaviour
         this.stats.setXP(Pstats.getXp());
         this.stats.setMaxXp(Pstats.getMaxXp());
         this.stats.setMaxHealth(Pstats.getMaxHealth());
-        this.stats.setSkill(0, true);
-        this.stats.setSkill(1, false);
-        this.stats.setSkill(2, false);
+        this.stats.setSkill(0, Pstats.getSkill(0));
+        this.stats.setSkill(1, Pstats.getSkill(1));
+        this.stats.setSkill(2, Pstats.getSkill(2));
     }
 
     private void OnTriggerEnter(Collider other)
