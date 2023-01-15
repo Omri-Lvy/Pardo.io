@@ -7,18 +7,42 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private Canvas CanvasPrefab;
+    [SerializeField] private GameObject Pardo;
+    [SerializeField] private GameObject PardoMage;
+    [SerializeField] private GameObject PardoArcher;
+    [SerializeField] private GameObject PardoAssassin;
+    [SerializeField] private GameObject Job_Menu;
     [SerializeField] private GameObject Snail;
     [SerializeField] private GameObject Blue_Snail;
     [SerializeField] private GameObject Shroom;
     [SerializeField] private GameObject Mano;
+<<<<<<< Updated upstream
+    [SerializeField] private GameObject Red_Snail;
+    [SerializeField] private GameObject Orange_Mashroom;
+    [SerializeField] private GameObject Blue_Mashroom;
+    [SerializeField] private GameObject Pig;
+    [SerializeField] private GameObject Renegade_Shroom;
+    [SerializeField] private GameObject Mushmom;
+    [SerializeField] private GameObject Ribbon_Pig;
+    [SerializeField] private GameObject Slime;
+    [SerializeField] private GameObject Green_Mashroom;
+    [SerializeField] private GameObject Fairy;
+    [SerializeField] private GameObject King_Slime;
+=======
+    
+    private GameObject CanvasInstance;
+>>>>>>> Stashed changes
     private int _lvl;
     private int _wave;
-    private Level1 _lvl1;
-    // private Level2 _lvl2;
-    // private Level3 _lvl3;
     private float _timer;
     private Dictionary<String, GameObject> MOBS;
     private List<WaveMob> _lvlWave;
+<<<<<<< Updated upstream
+    private Levels _levels;
+=======
+    private CanvasGroup _canvasgroup;
+>>>>>>> Stashed changes
 
 
     // Start is called before the first frame update
@@ -26,7 +50,7 @@ public class SpawnManager : MonoBehaviour
     {
         _lvl = 1;
         _wave = 1;
-        _lvl1 = new Level1();
+        _levels = new Levels();
         _timer = 0;
         MOBS = new Dictionary<string, GameObject>()
         {
@@ -34,13 +58,25 @@ public class SpawnManager : MonoBehaviour
             {"Blue_Snail",Blue_Snail},
             {"Shroom",Shroom},
             {"Mano",Mano},
+            {"Red_Snail",Red_Snail},
+            {"Orange_Mashroom",Orange_Mashroom},
+            {"Blue_Mashroom",Blue_Mashroom},
+            {"Pig",Pig},
+            {"Renegade_Shroom",Renegade_Shroom},
+            {"Mushmom",Mushmom},
+            {"Ribbon_Pig",Ribbon_Pig},
+            {"Slime",Slime},
+            {"Green_Mashroom",Green_Mashroom},
+            {"Fairy",Fairy},
+            {"King_Slime",King_Slime}
         };
-        _lvlWave = _lvl1.getWave(1);
+        _lvlWave = _levels.getWave(_lvl,_wave);
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
         if (_timer > 50)
         {
@@ -56,33 +92,18 @@ public class SpawnManager : MonoBehaviour
         {
             _lvl++;
             _wave = 1;
-            // if (_lvl == 2)
-            // {
-            //     _lvlWave = _lvl2.getWave(_wave);
-            // }
-            // else if (_lvl == 3)
-            // {
-            //     _lvlWave = _lvl3.getWave(_wave);
-            // }
         }
        
     }
 
     void handleSpwan()
     {
-        if (_lvl == 1)
+        if (_levels.getIsBoss(_lvl))
         {
-            if (_wave == 1)
+            GameObject[] mobs = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject mob in mobs)
             {
-                foreach (WaveMob mob in _lvlWave)
-                {
-                    if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() <= mob.getMax())
-                    {
-                        Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                        mob.increaseInstantiateCounter();
-                        mob.setLastInstantiate(_timer);
-                    }
-                }
+                Destroy(mob);
             }
             else if (_wave == 2)
             {
@@ -153,20 +174,53 @@ public class SpawnManager : MonoBehaviour
         } 
     }
 
-    private float getRandomX()
-    {
+    private float getRandomX() {
         float xPos = Random.Range(-5.5f, 5.5f);
         if (xPos < 0) xPos -= 4.6f;
         else if (xPos >= 0) xPos += 4.6f;
         return xPos;
-        
     }
 
-    private float getRandomY()
-    {
+    private float getRandomY() {
         float yPos = Random.Range(-6f, 6f);
-        if (yPos < 0) yPos -= 6.5f;
-        else if (yPos >= 0) yPos += 6.5f;
+        if (yPos < 0) yPos -= 4.6f;
+        else if (yPos >= 0) yPos += 4.6f;
         return yPos;
     }
+
+    public void selectCharacter(int i) {
+        
+        Debug.Log(i);
+        GameObject pardo = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 currentPosition = pardo.transform.position;
+        Quaternion currentRotation = pardo.transform.rotation;
+
+        Destroy(pardo);
+
+        GameObject chosenPardo = Pardo;
+
+        if (i == 1) {
+            chosenPardo = PardoMage;
+        } else if (i == 2) {
+            chosenPardo = PardoArcher;
+        } else if (i == 3) {
+            chosenPardo = PardoAssassin;
+        }
+
+        GameObject selectedPardo = Instantiate(chosenPardo, currentPosition, currentRotation);
+        pardo.transform.position = currentPosition;
+        pardo.transform.rotation = currentRotation;
+
+    }
+
+    public void resume() {
+        
+        _canvasgroup.alpha = 0f;
+        _canvasgroup.interactable = false;
+      
+        Time.timeScale = 1f;
+        //GameObject.FindGameObjectWithTag("Player").GameObject.setActive(false);
+    }
+
 }

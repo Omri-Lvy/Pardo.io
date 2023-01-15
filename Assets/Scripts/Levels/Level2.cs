@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Scripts.Levels
 {
-    public class Level1
+    public class Level2
     {
         private List<WaveMob> wave1;
         private List<WaveMob> wave2;
@@ -13,7 +12,7 @@ namespace Scripts.Levels
         private List<WaveMob> boss;
         private bool isBoss;
 
-        public Level1()
+        public Level2()
         {
             wave1 = buildWave1();
             wave2 = buildWave2();
@@ -42,41 +41,43 @@ namespace Scripts.Levels
             return isBoss;
         }
         
-
         private List<WaveMob> buildWave1()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 40);
-            return new List<WaveMob>() { mob1 };
+            WaveMob mob1 = new WaveMob("Red_Snail", 1.5f, 48);
+            WaveMob mob2 = new WaveMob("Shroom", 1f, 24);
+            return new List<WaveMob>() { mob1, mob2 };
         }
         private List<WaveMob> buildWave2()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 25);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 23);
-            return new List<WaveMob>() { mob1, mob2 };
+            WaveMob mob1 = new WaveMob("Red_Snail", 1.5f, 24);
+            WaveMob mob2 = new WaveMob("Shroom", 1.3f, 32);
+            WaveMob mob3 = new WaveMob("Orange_Mashroom", 1f, 24);
+            return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave3()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 23);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 37);
-            return new List<WaveMob>() { mob1, mob2 };
+            WaveMob mob1 = new WaveMob("Shroom", 1.5f, 24);
+            WaveMob mob2 = new WaveMob("Orange_Mashroom", 1f, 24);
+            WaveMob mob3 = new WaveMob("Blue_Mashroom", 1.3f, 24);
+            return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave4()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 13);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 26);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 17);
+            WaveMob mob1 = new WaveMob("Orange_Mashroom", 1f, 30);
+            WaveMob mob2 = new WaveMob("Blue_Mashroom", 1.3f, 30);
+            WaveMob mob3 = new WaveMob("Pig", 1.2f, 24);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave5()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 20);
-            WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 27);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 17);
+            WaveMob mob1 = new WaveMob("Blue_Mashroom", 1.5f, 30);
+            WaveMob mob2 = new WaveMob("Pig", 1.3f, 30);
+            WaveMob mob3 = new WaveMob("Renegade_Shroom", 1f, 24);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildBoss()
         {
-            WaveMob boss = new WaveMob("Mano", 0f, 1);
+            WaveMob boss = new WaveMob("Mushmom", 0f, 1);
             return new List<WaveMob>() { boss };
         }
 

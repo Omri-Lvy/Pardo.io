@@ -29,6 +29,7 @@ public class healthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _currVal = _player.GetComponent<Player>().getStats().getCurrentHealth();
         _slider.GetComponent<Slider>().value = _currVal;
         _text.text = Mathf.Floor(_currVal) + " / " + Mathf.Floor(_maxVal);
