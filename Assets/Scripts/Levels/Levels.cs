@@ -33,10 +33,12 @@ namespace Scripts.Levels
             return lvl switch
             {
                 1 => _level1.getIsBoss(),
-                // 2 => _level2.getWave(wave),
-                // 3 => _level3.getWave(wave),
+                2 => _level2.getIsBoss(),
+                3 => _level3.getIsBoss(),
                 _ => false
             };
         }
+        
+        
     }
 }

@@ -39,7 +39,8 @@ namespace Scripts.Levels
                 _ => getBoss(),
             };
         }
-
+        
+        
         public bool getIsBoss()
         {
             return isBoss;

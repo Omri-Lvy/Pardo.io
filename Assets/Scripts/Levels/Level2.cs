@@ -40,7 +40,7 @@ namespace Scripts.Levels
         {
             return isBoss;
         }
-
+        
         private List<WaveMob> buildWave1()
         {
             WaveMob mob1 = new WaveMob("Red_Snail", 1.5f, 48);

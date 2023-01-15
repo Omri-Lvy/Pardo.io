@@ -43,43 +43,63 @@ public class SpawnManager : MonoBehaviour
             {"Blue_Snail",Blue_Snail},
             {"Shroom",Shroom},
             {"Mano",Mano},
+            {"Red_Snail",Red_Snail},
+            {"Orange_Mashroom",Orange_Mashroom},
+            {"Blue_Mashroom",Blue_Mashroom},
+            {"Pig",Pig},
+            {"Renegade_Shroom",Renegade_Shroom},
+            {"Mushmom",Mushmom},
+            {"Ribbon_Pig",Ribbon_Pig},
+            {"Slime",Slime},
+            {"Green_Mashroom",Green_Mashroom},
+            {"Fairy",Fairy},
+            {"King_Slime",King_Slime}
         };
         _lvlWave = _levels.getWave(_lvl,_wave);
-        foreach (WaveMob mob in _lvlWave)
-        {
-            Debug.Log(mob.getMonster());
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
-        if (_timer > 40)
+        if ((_timer > 5 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
         {
+            Debug.Log(1);
             _wave += 1;
             _lvlWave = _levels.getWave(_lvl,_wave);
             _timer = 0;
         }
-        if (!_levels.getIsBoss(_lvl))
-        {
-            handleSpwan();
-        }
-        else
+        else if (_levels.getIsBoss(_lvl) && !enemy)
         {
             _lvl++;
             _wave = 1;
+            Debug.Log("You are now in level: "+_lvl);
         }
+
+        handleSpwan();
     }
 
     private void handleSpwan()
     {
-        foreach (WaveMob mob in _lvlWave) {
-            if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() < mob.getMax())
+        if (_levels.getIsBoss(_lvl))
+        {
+            GameObject[] mobs = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject mob in mobs)
             {
-                Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
-                mob.increaseInstantiateCounter();
-                mob.setLastInstantiate(_timer);
+                Destroy(mob);
+            }
+        }
+
+        if (_lvlWave != null)
+        {
+            foreach (WaveMob mob in _lvlWave) {
+                if (mob.getInterval() < _timer - mob.getLastInstantiate() &&  mob.getInstantiateCounter() < mob.getMax())
+                {
+                    Instantiate(MOBS[mob.getMonster()],new Vector3(getRandomX(), getRandomY(), 0), Quaternion.identity);
+                    mob.increaseInstantiateCounter();
+                    mob.setLastInstantiate(_timer);
+                }
             }
         }
     }

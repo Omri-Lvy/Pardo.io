@@ -41,6 +41,7 @@ namespace Scripts.Levels
         {
             return isBoss;
         }
+        
 
         private List<WaveMob> buildWave1()
         {

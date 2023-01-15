@@ -106,7 +106,7 @@ MonoBehaviour:
   _def: 50
   _health: 45
   _xpGiven: 3
-  _animator: {fileID: 0}
+  _animator: {fileID: -8726699851338646938}
 --- !u!54 &932545349604720836
 Rigidbody:
   m_ObjectHideFlags: 0
