@@ -12,6 +12,7 @@ public class Cooldown : Component
     private GameObject button;
     private Image background;
 
+
     public Cooldown(float cooldownTime, char buttonNum) {
         _isCooldown = false;
         _cooldownTime = cooldownTime;

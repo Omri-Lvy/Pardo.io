@@ -37,26 +37,26 @@ public class CanvasCollision : MonoBehaviour
     private void HandleCooldownButtons() {
         PlayerStats stats = _player.GetComponent<Player>().getStats();
         if(_player.name == "Pardo") {
-            button1.SetActive(false);
-            button2.SetActive(false);
-            button3.SetActive(false);
+            button1.SetActive(true);
+            button2.SetActive(true);
+            button3.SetActive(true);
         } else {
             bool [] skills = stats.getSkills();
             button1.SetActive(skills[0]);
             button2.SetActive(skills[1]);
             button3.SetActive(skills[2]);
         }
-        if(_player.name == "PardoMagician") {
+        if(_player.name == "PardoMagician(Clone)") {
             button1.GetComponent<Image>().sprite = MageSkill1;
             button2.GetComponent<Image>().sprite = MageSkill2;
             button3.GetComponent<Image>().sprite = MageSkill3;
         }
-        if(_player.name == "PardoArcher") {
+        if(_player.name == "PardoArcher(Clone)") {
             button1.GetComponent<Image>().sprite = ArcherSkill1;
             button2.GetComponent<Image>().sprite = ArcherSkill2;
             button3.GetComponent<Image>().sprite = ArcherSkill3;
         }
-        if(_player.name == "PardoAssassin") {
+        if(_player.name == "PardoAssassin(Clone)") {
             button1.GetComponent<Image>().sprite = AssassinSkill1;
             button2.GetComponent<Image>().sprite = AssassinSkill2;
             button3.GetComponent<Image>().sprite = AssassinSkill3;

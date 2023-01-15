@@ -43,7 +43,10 @@ namespace Scripts
             _exp = exp;
             _maxExp = maxExp;
             _level = level;
-            _skills = skills;
+            _skills = new bool [3];
+            _skills[0] = skills[0];
+            _skills[1] = skills[1];
+            _skills[2] = skills[2];
         }
 
         public void getHit(float attack)

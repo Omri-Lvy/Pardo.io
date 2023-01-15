@@ -65,16 +65,20 @@ public class Player : MonoBehaviour
         return stats;
     }
 
-    public void setStats(PlayerStats stats)
+    public void setStats(PlayerStats Pstats)
     {
-        this.stats.setCurrenthealth(stats.getCurrentHealth());
-        this.stats.setAttack(stats.getAttack());
-        this.stats.setDef(stats.getDef());
-        this.stats.setLevel(stats.getLevel());
-        this.stats.setSpeed(stats.getSpeed());
-        this.stats.setXP(stats.getXp());
-        this.stats.setMaxXp(stats.getMaxXp());
-        this.stats.setMaxHealth(stats.getMaxHealth());
+        this.stats.setCurrenthealth(Pstats.getCurrentHealth());
+        this.stats.setAttack(Pstats.getAttack());
+        this.stats.setDef(Pstats.getDef());
+        this.stats.setLevel(Pstats.getLevel());
+        this.stats.setSpeed(Pstats.getSpeed());
+        this.stats.setXP(Pstats.getXp());
+        this.stats.setMaxXp(Pstats.getMaxXp());
+        this.stats.setMaxHealth(Pstats.getMaxHealth());
+        bool [] skills = Pstats.getSkills();
+        this.stats.setSkill(0, skills[0]);
+        this.stats.setSkill(1, skills[1]);
+        this.stats.setSkill(2, skills[2]);
     }
 
     private void OnTriggerEnter(Collider other)
