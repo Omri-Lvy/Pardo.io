@@ -12,10 +12,11 @@ public class PoisonCloud : MonoBehaviour
     public float expRadius;
     public int damage;
     public float consistTime;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Fart");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -27,7 +28,8 @@ public class PoisonCloud : MonoBehaviour
     void Update()
     {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        if (screenPosition.y > Screen.height || screenPosition.y < 0) {
+        if (screenPosition.y > Screen.height || screenPosition.y < 0)
+        {
             Destroy(this.gameObject);
         }
     }
@@ -36,9 +38,11 @@ public class PoisonCloud : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
+            if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
+            {
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-                if(!didHit) {
+                if (!didHit)
+                {
                     _animator.Play("Poison_Cloud_hit");
                     Destroy(gameObject, consistTime);
                     Invoke("playLingerAnim", 0.1f);
@@ -50,21 +54,26 @@ public class PoisonCloud : MonoBehaviour
         }
     }
 
-    private void playLingerAnim() {
+    private void playLingerAnim()
+    {
+        FindObjectOfType<AudioManager>().Play("PoisonCloudConsist");
         _animator.Play("Poison_Cloud_consist");
     }
 
-    private void playClearoutAnim() {
+    private void playClearoutAnim()
+    {
         _animator.Play("Poison_Cloud_clearout");
     }
 
-    private void poisonLinger() {
+    private void poisonLinger()
+    {
         Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, expRadius);
         foreach (Collider collider in enemies)
         {
-            if(collider != null && collider.tag == "Enemy") {
+            if (collider != null && collider.tag == "Enemy")
+            {
                 collider.gameObject.GetComponent<Enemy>().getHit(damage);
             }
         }
-}
+    }
 }

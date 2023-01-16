@@ -10,10 +10,11 @@ public class Fireball : MonoBehaviour
     [SerializeField] public Animator _animator;
     public float expRadius;
     public int damage;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("FireballMove");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -25,7 +26,9 @@ public class Fireball : MonoBehaviour
     void Update()
     {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        if (screenPosition.y > Screen.height || screenPosition.y < 0) {
+        if (screenPosition.y > Screen.height || screenPosition.y < 0)
+        {
+            FindObjectOfType<AudioManager>().Stop("FireballMove");
             Destroy(this.gameObject);
         }
     }
@@ -34,14 +37,18 @@ public class Fireball : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
+            if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
+            {
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
                 _animator.Play("Fire_Ball_hit");
+                FindObjectOfType<AudioManager>().Play("FireballHit");
+                FindObjectOfType<AudioManager>().Stop("FireballMove");
                 Destroy(gameObject, 1f);
-                Collider[] enemies = Physics.OverlapSphere (gameObject.transform.position, expRadius);
+                Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, expRadius);
                 foreach (Collider collider in enemies)
                 {
-                    if(collider != null && collider.tag == "Enemy") {
+                    if (collider != null && collider.tag == "Enemy")
+                    {
                         collider.gameObject.GetComponent<Enemy>().getHit(damage);
                     }
                 }

@@ -5,10 +5,19 @@ using UnityEngine;
 public class Firepillar : MonoBehaviour
 {
     public int damage;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        int rand = Random.Range(1, 3);
+        if (rand == 1)
+        {
+            FindObjectOfType<AudioManager>().Play("Firepillar1");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("Firepillar2");
+        }
         Destroy(gameObject, 1f);
     }
 
@@ -22,7 +31,8 @@ public class Firepillar : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
+            if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
+            {
                 other.gameObject.GetComponent<Enemy>().getHit(damage);
             }
         }
