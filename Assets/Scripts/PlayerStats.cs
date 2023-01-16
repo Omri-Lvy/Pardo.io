@@ -14,7 +14,7 @@ namespace Scripts
         private int _exp;
         private int _maxExp;
         private int _level;
-        private bool [] _skills;
+        private bool[] _skills;
 
 
         public PlayerStats(float attack, float speed, float def)
@@ -45,7 +45,7 @@ namespace Scripts
             _exp = exp;
             _maxExp = maxExp;
             _level = level;
-            _skills = new bool [3];
+            _skills = new bool[3];
             _skills[0] = skills[0];
             _skills[1] = skills[1];
             _skills[2] = skills[2];
@@ -53,7 +53,7 @@ namespace Scripts
 
         public void getHit(float attack)
         {
-            _currentHealth -= attack * (100/(100 + _def));
+            _currentHealth -= attack * (100 / (100 + _def));
             if (_currentHealth <= 0 && _isDead == false)
             {
                 Debug.Log("DEAD: " + _currentHealth);
@@ -171,24 +171,30 @@ namespace Scripts
             GameObject.Find("Health_Bar").GetComponent<healthBar>().changeMaxVal(_maxHealth);
             GameObject.Find("Level_Text").GetComponent<LevelText>().changeVal(_level);
             Debug.Log("Leveled up! Now level: " + _level);
+            FindObjectOfType<AudioManager>().Play("LevelUp");
 
-            if(_level == 2) {
+            if (_level == 2)
+            {
                 _skills[1] = true;
             }
-            if(_level == 3) {
+            if (_level == 3)
+            {
                 _skills[2] = true;
             }
         }
 
-        public bool [] getSkills() {
+        public bool[] getSkills()
+        {
             return _skills;
         }
 
-        public bool getSkill(int i) {
+        public bool getSkill(int i)
+        {
             return _skills[i];
         }
 
-        public void setSkill(int i, bool val) {
+        public void setSkill(int i, bool val)
+        {
             _skills[i] = val;
         }
     }

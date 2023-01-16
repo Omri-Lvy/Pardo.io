@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _walkingSpeed = 2.25f; 
+    [SerializeField] private float _walkingSpeed = 2.25f;
     [SerializeField] private float _attack = 20;
     [SerializeField] private float _def = 15;
     public Animator animator;
@@ -86,6 +86,19 @@ public class Player : MonoBehaviour
         {
             if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
             {
+                int rand = UnityEngine.Random.Range(1, 3);
+                if (rand == 1)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo1");
+                }
+                else if (rand == 2)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo2");
+                }
+                else if (rand == 3)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo3");
+                }
                 stats.getHit(other.gameObject.GetComponent<Enemy>().getStats().getAttack());
             }
             if (stats.isDead())

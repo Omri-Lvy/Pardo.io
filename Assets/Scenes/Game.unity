@@ -2402,6 +2402,30 @@ MonoBehaviour:
     pitch: 1.66
     loop: 0
     source: {fileID: 0}
+  - name: Pardo1
+    clip: {fileID: 8300000, guid: 9de7f9878c6654de2a2f854a7f24ca9c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pardo2
+    clip: {fileID: 8300000, guid: fee2ca5a93cfd458d8bd12096ed79f08, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pardo3
+    clip: {fileID: 8300000, guid: 851697426f9374cdeab611c2bad9e387, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: e4bc7b85876b4453f8b5311e0f905ff8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1850066222
 GameObject:
   m_ObjectHideFlags: 0

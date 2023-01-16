@@ -125,7 +125,7 @@ MonoBehaviour:
   _attack: 8
   _def: 20
   _health: 39
-  _xpGiven: 300
+  _xpGiven: 1
   _animator: {fileID: 436232298730965904}
 --- !u!54 &6252053520875119888
 Rigidbody:
