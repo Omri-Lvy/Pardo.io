@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     private string _moveAnim;
     private string _dieAnim;
     private string _hitAnim;
+    private string _sound;
+    private AudioManager _audioManager;
 
 
     // Start is called before the first frame update
@@ -26,23 +28,28 @@ public class Enemy : MonoBehaviour
     {
         _stats = new EnemyStats(_attack, _speed, _def, _health, _xpGiven);
         _player = GameObject.FindGameObjectWithTag("Player");
-        _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_move";
-        _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_die";
-        _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_hit";
+        _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_move";
+        _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_die";
+        _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_hit";
+        _sound = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_sound";
+        _audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         if (_stats.isDead())
         {
+            _audioManager.Play(_sound);
             _animator.Play(_dieAnim);
             Destroy(gameObject, 1f);
-            if(!_stats.gaveXP()) {
+            if (!_stats.gaveXP())
+            {
                 _player.GetComponent<Player>().getStats().addXp(_xpGiven);
                 _stats.setGaveXP(true);
             }
-            
+
         }
         else if (_stats.getIsHit() && !_stats.isDead())
         {
@@ -62,15 +69,19 @@ public class Enemy : MonoBehaviour
             _stats.setSpeed(_speed);
             _animator.Play(_moveAnim);
         }
-        if (_player.transform.position.x > transform.position.x)
+
+        if (_player)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            if (_player.transform.position.x > transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            if (_player.transform.position.x < transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            transform.position = Vector2.MoveTowards(this.transform.position, _player.transform.position, _stats.getSpeed() * Time.deltaTime);
         }
-        if (_player.transform.position.x < transform.position.x)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        transform.position = Vector2.MoveTowards(this.transform.position, _player.transform.position, _stats.getSpeed() * Time.deltaTime);
     }
 
     public EnemyStats getStats()

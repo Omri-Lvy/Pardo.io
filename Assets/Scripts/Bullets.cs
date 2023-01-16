@@ -13,6 +13,7 @@ public class Bullets : MonoBehaviour
     private Rigidbody rb;
     public float force;
     public float damage;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Bullets : MonoBehaviour
         Vector3 direction = mousePosition - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getAttack();
+        health = 3;
     }
 
     // Update is called once per frame
@@ -37,9 +39,12 @@ public class Bullets : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            health--;
             if(!other.gameObject.GetComponent<Enemy>().getStats().isDead()) {
-                Destroy(this.gameObject);
                 other.gameObject.GetComponent<Enemy>().getHit(damage);
+                if(health == 1) {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

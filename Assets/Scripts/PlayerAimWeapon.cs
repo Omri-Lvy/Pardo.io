@@ -50,7 +50,7 @@ public class PlayerAimWeapon : MonoBehaviour
         if (canFire)
         {
             canFire = false;
-            Instantiate(bullet, aimTransform.position, Quaternion.identity);
+            Instantiate(bullet, aimTransform.position, aimTransform.rotation);
         }
         
     }

@@ -44,7 +44,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d3f9e5cc084e6e878a6929a3c4e0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasPrefab: {fileID: 0}
+  Pardo: {fileID: 0}
+  PardoMage: {fileID: 0}
+  PardoArcher: {fileID: 0}
+  PardoAssassin: {fileID: 0}
   Snail: {fileID: 436232298730965909, guid: ebf104334ee284940b9e19eb3c8874ac, type: 3}
   Blue_Snail: {fileID: 7440030787017358919, guid: 499d3e76a125d4c4cbe017c6d848ec29, type: 3}
   Shroom: {fileID: 4679516387031739220, guid: 09e775af4758b0c478d331e4965a2cac, type: 3}
   Mano: {fileID: 8915965452037962385, guid: aa597380d75260f4f8481b9fb9de6074, type: 3}
+  Red_Snail: {fileID: 0}
+  Orange_Mashroom: {fileID: 0}
+  Blue_Mashroom: {fileID: 0}
+  Pig: {fileID: 0}
+  Renegade_Shroom: {fileID: 0}
+  Mushmom: {fileID: 0}
+  Ribbon_Pig: {fileID: 0}
+  Slime: {fileID: 0}
+  Green_Mashroom: {fileID: 0}
+  Fairy: {fileID: 0}
+  King_Slime: {fileID: 0}
+  isPaused: 0

@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8828908344680992983, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000004371139
       objectReference: {fileID: 0}
     - target: {fileID: 8828908344680992983, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8828908344680992983, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8828908344680992983, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -71,8 +71,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8828908344680992980, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
+--- !u!1 &1686229000108226158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8828908344680992968, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}
+  m_PrefabInstance: {fileID: 7917368877688350374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3308638200040206879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686229000108226158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef6c45c492ff47159a2d0d99acfcb07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowRain: {fileID: 8438511008552923662, guid: 7063bff462103b941bc76a8648bd529a, type: 3}
+  waveShot: {fileID: 52925499547315506, guid: f9adcfffef3c4354ba82e6d903863560, type: 3}
+  homing: {fileID: 1067580752916038905, guid: 90a9353b6b311784c91970cd086dcc48, type: 3}
+  arrowRainCDtime: 9
+  waveShotCDtime: 5
+  homingCDtime: 7
 --- !u!95 &1686229000108226164 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8828908344680992978, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}

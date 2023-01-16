@@ -25,6 +25,7 @@ public class xpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _currVal = _player.GetComponent<Player>().getStats().getXp();
         _slider.GetComponent<Slider>().value = _currVal;
     }

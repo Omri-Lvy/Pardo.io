@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _walkingSpeed = 2.25f;
-    [SerializeField] private float _attack = 10;
-    [SerializeField] private float _def = 10;
+    [SerializeField] private float _attack = 20;
+    [SerializeField] private float _def = 15;
     public Animator animator;
     public PlayerStats stats;
 
     public Quaternion q;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //Reset position to (0,0,0)
         stats = new PlayerStats(_attack, _walkingSpeed, _def);
@@ -65,17 +66,47 @@ public class Player : MonoBehaviour
         return stats;
     }
 
+    public void setStats(PlayerStats Pstats)
+    {
+        this.stats.setCurrenthealth(Pstats.getCurrentHealth());
+        this.stats.setAttack(Pstats.getAttack());
+        this.stats.setDef(Pstats.getDef());
+        this.stats.setLevel(Pstats.getLevel());
+        this.stats.setSpeed(Pstats.getSpeed());
+        this.stats.setXP(Pstats.getXp());
+        this.stats.setMaxXp(Pstats.getMaxXp());
+        this.stats.setMaxHealth(Pstats.getMaxHealth());
+        this.stats.setSkill(0, Pstats.getSkill(0));
+        this.stats.setSkill(1, Pstats.getSkill(1));
+        this.stats.setSkill(2, Pstats.getSkill(2));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
             if (!other.gameObject.GetComponent<Enemy>().getStats().isDead())
             {
+                int rand = UnityEngine.Random.Range(1, 3);
+                if (rand == 1)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo1");
+                }
+                else if (rand == 2)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo2");
+                }
+                else if (rand == 3)
+                {
+                    FindObjectOfType<AudioManager>().Play("Pardo3");
+                }
                 stats.getHit(other.gameObject.GetComponent<Enemy>().getStats().getAttack());
             }
             if (stats.isDead())
             {
-                Destroy(gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                Application.Quit();
+                // Destroy(gameObject);
             }
         }
     }
