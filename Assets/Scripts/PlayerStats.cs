@@ -88,7 +88,7 @@ namespace Scripts
 
         public void setCurrenthealth(float newHealth)
         {
-            _currentHealth = Math.Min(_maxHealth, newHealth);
+            _currentHealth = newHealth;
         }
         public float getCurrentHealth()
         {
