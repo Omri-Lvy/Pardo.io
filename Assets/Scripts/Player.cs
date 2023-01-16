@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -103,7 +104,9 @@ public class Player : MonoBehaviour
             }
             if (stats.isDead())
             {
-                Destroy(gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                Application.Quit();
+                // Destroy(gameObject);
             }
         }
     }

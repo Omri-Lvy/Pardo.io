@@ -6,6 +6,7 @@ using Scripts;
 using Scripts.Levels;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
@@ -75,30 +76,29 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().isDead())
-        {
-            Application.Quit();
-        }
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
-        if ((_timer > 45 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
+        if ((_timer > 3 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
         {
+            Debug.Log(_lvl > 1 ? _lvl - 1 : 1);
             _wave += 1;
             _lvlWave = _levels.getWave(_lvl,_wave);
             _timer = 0;
+            Debug.Log(_lvl+" "+_wave + " a");
         }
-        else if (_levels.getIsBoss(_lvl) && !enemy)
+        if (_levels.getIsBoss(_lvl) && _wave > 1 && !enemy)
         {
+            handleSpwan();
             _lvl++;
             _wave = 1;
-            Debug.Log(_lvl);
-            handleSpwan();
+            Debug.Log(_lvl+" "+_wave);
         }
         else
         {
             handleSpwan();
         }
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().getStats().getLevel() == 3 && !_jobSelected)
+        if (player.getStats().getLevel() == 3 && !_jobSelected)
         {
             Time.timeScale = 0;
             _canvasgroup = CanvasPrefab.GetComponent<CanvasGroup>();
