@@ -7,8 +7,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _walkingSpeed = 2.25f; 
-    private float _attack = 20;
-    private float _def = 15;
+    [SerializeField] private float _attack = 20;
+    [SerializeField] private float _def = 15;
     public Animator animator;
     public PlayerStats stats;
 
