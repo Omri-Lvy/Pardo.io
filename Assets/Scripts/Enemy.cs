@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private string _moveAnim;
     private string _dieAnim;
     private string _hitAnim;
+    private string _sound;
 
 
     // Start is called before the first frame update
@@ -26,9 +27,10 @@ public class Enemy : MonoBehaviour
     {
         _stats = new EnemyStats(_attack, _speed, _def, _health, _xpGiven);
         _player = GameObject.FindGameObjectWithTag("Player");
-        _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_move";
-        _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_die";
-        _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)","") + "_hit";
+        _moveAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_move";
+        _dieAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_die";
+        _hitAnim = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_hit";
+        _sound = gameObject.name.Split(" ")[0].Replace("(Clone)", "") + "_sound";
     }
 
     // Update is called once per frame
@@ -37,13 +39,15 @@ public class Enemy : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         if (_stats.isDead())
         {
+            FindObjectOfType<AudioManager>().Play(_sound);
             _animator.Play(_dieAnim);
             Destroy(gameObject, 1f);
-            if(!_stats.gaveXP()) {
+            if (!_stats.gaveXP())
+            {
                 _player.GetComponent<Player>().getStats().addXp(_xpGiven);
                 _stats.setGaveXP(true);
             }
-            
+
         }
         else if (_stats.getIsHit() && !_stats.isDead())
         {

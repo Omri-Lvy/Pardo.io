@@ -2231,6 +2231,177 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815179174}
   m_CullTransparentMesh: 1
+--- !u!1 &1823661498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823661500}
+  - component: {fileID: 1823661502}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1823661500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823661498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1823661502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823661498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d830effc2a2474e4bb50dda63ee05980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: FireballMove
+    clip: {fileID: 8300000, guid: 32b93bceaf07949878aeb968993e0d03, type: 3}
+    volume: 0.438
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: FireballHit
+    clip: {fileID: 8300000, guid: 4871d7869b783423e8d51cce5b51ec48, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Firepillar1
+    clip: {fileID: 8300000, guid: ebdb68da01bc24b2cab598f55f9cb400, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Firepillar2
+    clip: {fileID: 8300000, guid: 8031ce9c4b2804791915c49605fe2831, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PoisonCloudConsist
+    clip: {fileID: 8300000, guid: 3a7d055d4483c4f68a273071e101c06e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fart
+    clip: {fileID: 8300000, guid: 00e012eb49cba40d6aa0078a4ecdde9f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Snail_sound
+    clip: {fileID: 8300000, guid: 4337689e04ceb4cb5a8ef95743563d4c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Red_Snail_sound
+    clip: {fileID: 8300000, guid: d99bae3b19e38437e8622ce852611e49, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blue_Snail_sound
+    clip: {fileID: 8300000, guid: 534d1a5bd4a6b4cb1a5215e8e93905a3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Orange_Mushroom_sound
+    clip: {fileID: 8300000, guid: 7997d5d92c0b64740bb617864b0e43b9, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Green_Mushroom_sound
+    clip: {fileID: 8300000, guid: 37a7776239ed4466d8f59e0aebf41a54, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blue_Mushroom_sound
+    clip: {fileID: 8300000, guid: b709b20c64cfe4b7d8fa02b98644fa20, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pig_sound
+    clip: {fileID: 8300000, guid: 182c4ed3f4d8d421da35fa7c078b2d24, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ribbon_Pig_sound
+    clip: {fileID: 8300000, guid: 04275235c268b4582a9c7431d3a078a1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fairy_sound
+    clip: {fileID: 8300000, guid: 043c0330c40314973a2ed5bdeca82015, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mano_sound
+    clip: {fileID: 8300000, guid: 756fc89a867bd4a5fa12b7967bf47926, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mushmom_sound
+    clip: {fileID: 8300000, guid: 44d8a4ba011d54da2b278a66540a0988, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Slime_sound
+    clip: {fileID: 8300000, guid: dbb6c8ae3f9264ac5ab86589bf6b3ca1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: King_Slime_sound
+    clip: {fileID: 8300000, guid: c4f2f98f3c31348dab5dc09233a1ce04, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shroom_sound
+    clip: {fileID: 8300000, guid: 37a7776239ed4466d8f59e0aebf41a54, type: 3}
+    volume: 0.5
+    pitch: 1.66
+    loop: 0
+    source: {fileID: 0}
+  - name: Renegade_Shroom_sound
+    clip: {fileID: 8300000, guid: b709b20c64cfe4b7d8fa02b98644fa20, type: 3}
+    volume: 0.5
+    pitch: 1.66
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1850066222
 GameObject:
   m_ObjectHideFlags: 0
