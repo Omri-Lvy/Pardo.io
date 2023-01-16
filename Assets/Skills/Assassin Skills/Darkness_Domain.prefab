@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 716770334378206161}
   expRadius: 2
-  damage: 20
+  damage: 40
   consistTime: 5
 --- !u!82 &3269247280369995223
 AudioSource:

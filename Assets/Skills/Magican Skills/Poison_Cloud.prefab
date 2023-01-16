@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5053798978033677817}
   expRadius: 1.5
-  damage: 5
+  damage: 12
   consistTime: 10
 --- !u!54 &-4385734035760384895
 Rigidbody:

@@ -56,22 +56,23 @@ namespace Scripts.Levels
         }
         private List<WaveMob> buildWave3()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 14);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 10);
             WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 26);
-            return new List<WaveMob>() { mob1, mob2 };
+            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 12);
+            return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave4()
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 8);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 5);
             WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 15);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 8);
+            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 16);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave5() 
         {
-            WaveMob mob1 = new WaveMob("Snail", 1.5f, 10);
+            WaveMob mob1 = new WaveMob("Snail", 1.5f, 5);
             WaveMob mob2 = new WaveMob("Blue_Snail", 1.3f, 20);
-            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 12);
+            WaveMob mob3 = new WaveMob("Shroom", 1.2f, 20);
             return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildBoss()

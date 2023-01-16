@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5683789809468216739}
   expRadius: 2.5
-  damage: 30
+  damage: 40
 --- !u!136 &-2780346328953912573
 CapsuleCollider:
   m_ObjectHideFlags: 0

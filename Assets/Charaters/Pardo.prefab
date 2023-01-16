@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkingSpeed: 2.25
-  _attack: 10
+  _attack: 30
   _def: 10
   animator: {fileID: 8828908344680992978}
   stats: {fileID: 0}

@@ -15,6 +15,8 @@ namespace Scripts
         private int _maxExp;
         private int _level;
         private bool[] _skills;
+        private int[] expToLvl = new int[] { 1, 5, 5, 5, 5, 200, 300, 400, 550, 10000 };
+    
 
 
         public PlayerStats(float attack, float speed, float def)
@@ -26,7 +28,7 @@ namespace Scripts
             _speed = speed;
             _def = def;
             _exp = 0;
-            _maxExp = 25;
+            _maxExp = 5;
             _level = 1;
             _skills = new bool[3];
             _skills[0] = true;
@@ -165,19 +167,19 @@ namespace Scripts
             _maxHealth += 10;
             _currentHealth = _maxHealth;
             _exp = _exp - _maxExp; // Take carry over xp
-            _maxExp += 10;
             _level += 1;
+            _maxExp = expToLvl[_level];
             GameObject.Find("XP_Bar").GetComponent<xpBar>().changeMaxVal(_maxExp);
             GameObject.Find("Health_Bar").GetComponent<healthBar>().changeMaxVal(_maxHealth);
             GameObject.Find("Level_Text").GetComponent<LevelText>().changeVal(_level);
             Debug.Log("Leveled up! Now level: " + _level);
             FindObjectOfType<AudioManager>().Play("LevelUp");
 
-            if (_level == 2)
+            if (_level == 4)
             {
                 _skills[1] = true;
             }
-            if (_level == 3)
+            if (_level == 5)
             {
                 _skills[2] = true;
             }

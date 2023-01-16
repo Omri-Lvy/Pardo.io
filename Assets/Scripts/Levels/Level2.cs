@@ -43,9 +43,10 @@ namespace Scripts.Levels
         
         private List<WaveMob> buildWave1()
         {
-            WaveMob mob1 = new WaveMob("Red_Snail", 1.5f, 48);
-            WaveMob mob2 = new WaveMob("Shroom", 1f, 24);
-            return new List<WaveMob>() { mob1, mob2 };
+            WaveMob mob1 = new WaveMob("Red_Snail", 1.5f, 30);
+            WaveMob mob2 = new WaveMob("Shroom", 1f, 18);
+             WaveMob mob3 = new WaveMob("Orange_Mashroom", 1f, 18);
+            return new List<WaveMob>() { mob1, mob2, mob3 };
         }
         private List<WaveMob> buildWave2()
         {

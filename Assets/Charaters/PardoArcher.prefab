@@ -94,9 +94,9 @@ MonoBehaviour:
   arrowRain: {fileID: 8438511008552923662, guid: 7063bff462103b941bc76a8648bd529a, type: 3}
   waveShot: {fileID: 52925499547315506, guid: f9adcfffef3c4354ba82e6d903863560, type: 3}
   homing: {fileID: 1067580752916038905, guid: 90a9353b6b311784c91970cd086dcc48, type: 3}
-  arrowRainCDtime: 5
+  arrowRainCDtime: 9
   waveShotCDtime: 5
-  homingCDtime: 5
+  homingCDtime: 7
 --- !u!95 &1686229000108226164 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8828908344680992978, guid: 65e5c24c3560a405fbe786ce12f734e7, type: 3}

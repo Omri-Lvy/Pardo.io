@@ -103,6 +103,6 @@ MonoBehaviour:
   fireball: {fileID: 6621044961275106557, guid: 3400322a93214e14caf6fa77b838ccb6, type: 3}
   firepillar: {fileID: 3951058116000299342, guid: 8019ff3682e5d4f43813c6281526c76d, type: 3}
   poisonCloud: {fileID: 8971600940987924012, guid: ea297d11e2085824686ae711bd8bbf6f, type: 3}
-  fireballCDtime: 3
-  firepillarCDtime: 5
-  poisonCloudCDtime: 10
+  fireballCDtime: 5
+  firepillarCDtime: 7
+  poisonCloudCDtime: 9
