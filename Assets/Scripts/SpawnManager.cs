@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         _timer += 1 * Time.deltaTime;
-        if ((_timer > 25 || (!enemy && _wave > 1)) && !_levels.getIsBoss(_lvl))
+        if (_timer > 20 && !_levels.getIsBoss(_lvl))
         {
             Debug.Log(_lvl > 1 ? _lvl - 1 : 1);
             _wave += 1;
@@ -89,9 +89,9 @@ public class SpawnManager : MonoBehaviour
         }
         if (_levels.getIsBoss(_lvl) && _wave > 1 && !enemy)
         {
-            handleSpwan();
             _lvl++;
             _wave = 1;
+            _timer = 0;
             Debug.Log(_lvl+" "+_wave);
         }
         else
