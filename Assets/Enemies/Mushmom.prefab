@@ -51,8 +51,8 @@ MonoBehaviour:
   _player: {fileID: 0}
   _speed: 2
   _attack: 30
-  _def: 90
-  _health: 375
+  _def: 100
+  _health: 750
   _xpGiven: 50
   _animator: {fileID: 2563405109124339409}
 --- !u!95 &2563405109124339409
