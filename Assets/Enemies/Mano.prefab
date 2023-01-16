@@ -53,7 +53,7 @@ MonoBehaviour:
   _attack: 20
   _def: 80
   _health: 500
-  _xpGiven: 15
+  _xpGiven: 150
   _animator: {fileID: 2114551655547823962}
 --- !u!212 &-442251830044611644
 SpriteRenderer:
