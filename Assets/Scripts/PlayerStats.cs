@@ -15,7 +15,7 @@ namespace Scripts
         private int _maxExp;
         private int _level;
         private bool[] _skills;
-        private int[] expToLvl = new int[] { 1, 5, 5, 5, 5, 200, 300, 400, 550, 10000 };
+        private int[] expToLvl = new int[] { 1, 5, 5, 5, 5, 50, 180, 220, 350, 10000 };
     
 
 

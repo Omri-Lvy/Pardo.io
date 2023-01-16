@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _speed: 1.5
+  _speed: 2
   _attack: 30
-  _def: 70
-  _health: 190
+  _def: 90
+  _health: 375
   _xpGiven: 50
   _animator: {fileID: 2563405109124339409}
 --- !u!95 &2563405109124339409

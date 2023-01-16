@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _speed: 1.5
+  _speed: 2
   _attack: 40
-  _def: 90
-  _health: 200
+  _def: 120
+  _health: 500
   _xpGiven: 150
   _animator: {fileID: 3201824068687187566}
